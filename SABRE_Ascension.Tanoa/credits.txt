@@ -1,0 +1,100 @@
+*********************************************************************************************************************************
+
+Title:
+
+	SABRE: Ascension
+
+*********************************************************************************************************************************
+
+Author:
+
+	AlphaDog
+	
+	Contact Email: jakedg789@gmail.com
+
+*********************************************************************************************************************************
+
+Mission Version:
+
+	Released: September 7, 2016
+	
+	V1.0 - Official Release
+	
+	V1.1 
+		- Added a failsafe to ensure the pilot is forced into the pilot seat of the CSAT VTOL if he doesn't get in the pilot seat for some reason.
+		- Changed the color of Fox's name in the situation section of the briefing
+		
+	V1.11
+		- Locked the VTOL's cargo and turret seats so the VTOL pilot is forced to get in the pilot seat.
+	
+	V1.2
+		- Fixed Fox's conversation trigger not working correctly in MP
+		- Changed Fox's marker to a CTRG marker
+		- Deleted Sabre Team's backstory in the codex because it now doesn't match up with the changes I've made to the first Sabre mission.
+		
+	V1.3
+		- Fixed VTOL pilot not arriving to steal the CSAT VTOL
+		- Adjusted Sabre's loadouts a tiny bit
+		- Changed the way how covnersations and radio messeges are displayed (Similar to Wetwork's)
+		- Added my updated functions library
+		- Changed the way how you download intel from the terminals
+		- There is now a 50% chance a helicopter will drop reinforcements at the volcano when Sabre team is attacking it
+		- Various improvements to the code in certain scripts
+		- Added/removed enemies in certain areas
+		- Fixed the pilot not leaving the area once he got in the VTOL
+		- Disabled saving in multiplayer
+		- If all players are down then the mission fails
+		- Added stealth parameter that adjusts squad loadouts and AI behavior
+		- Added fatigue parameter that enables/disables fatigue
+		- Adjusted the briefing
+		- CSAT markers are crossed out upon the objective associated with them being completed
+		- Added more clutter
+		- Adjusted the position of the darter UAV
+	
+	V1.31
+		- Removed a left over trigger that was causing the pilot objective to fail when the pilot flew away with the VTOL
+		
+	V1.4
+		- Added dynamic simulation to improve performance
+		- Updated to the latest version of Psycho's Revive (v3072018)
+		- Attempted to fix the pilot not taking off when he enters the VTOL
+		- Adjusted intro text to center of the screen
+		- Adjusted Foster's (Sabre's Engineer) loadout
+		
+	Hotfix
+		- Fixed the person being revived by a medic not being fully healing after a revive
+		
+*********************************************************************************************************************************
+
+Copyright Disclaimer:
+
+	© Jacob D. Gidley, 2016
+	ALL RIGHTS RESERVED. 
+
+	No part of this mission or any of its contents may be reproduced, copied, modified or adapted, without the prior written consent of the author.
+	Commercial use and/or distribution of the mission is not allowed without express and prior written consent of the author. 
+	This mission is a work of fiction. Names, characters, places, and incidents either are products of the author’s imagination or are used fictitiously. Any resemblance to actual events or locales or persons, living or dead, is entirely coincidental.
+	The author bears no responsibility for anything caused by downloading and/or playing this mission. In the case of any damage to your PC or your data, the author bears no responsibility for it.
+	You can download and/or play the mission at your own risk.
+	
+*********************************************************************************************************************************
+
+Music Credits:
+
+	DISCLAIMER: I did not create, nor was I involved in the creation of any of the songs used in this mission. All ownership rights are property of their respective owners.
+	
+	* Paint It, Black by The Rolling Stones
+	
+	* Top Secret by Sovereign
+	
+	* All Along the Watchtower by Jimi Hendrix
+	
+**********************************************************************************************************************************
+
+Thank you:
+
+	- The mission testers
+	- The BIS community
+	- Those of you who took the time to play my mission
+
+**********************************************************************************************************************************
