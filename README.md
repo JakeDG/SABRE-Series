@@ -6,11 +6,12 @@ The Sabre Series follows a story that takes place in an alternate universe to Ar
 Embark on a campaign of fun and immersive missions of different types and sizes in which how you want to complete the mission is entirely up to you. All missions require no add-ons and are heavily tested to ensure the best quality.
 
 All SABRE Missions Feature:
-SP / COOP - 5 Players
-Parameters for Multiplayer 
-No Addons Required
-Loadouts adjusted depending on DLC owned
-FHQ Tasktracker by Varanon
-AIS Revive by Psycho
-Varying amounts of randomization
-Codex for the Sabre Universe (If you would like to read it)
+
+	SP/COOP - 5 Players
+	Parameters for Multiplayer 
+	No Addons Required
+	Loadouts adjusted depending on DLC owned
+	FHQ Tasktracker by Varanon
+	AIS Revive by Psycho
+	Varying amounts of randomization
+	Codex for the Sabre Universe (If you would like to read it)
