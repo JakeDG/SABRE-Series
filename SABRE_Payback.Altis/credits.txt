@@ -1,0 +1,83 @@
+*********************************************************************************************************************************
+
+New Title:
+	
+	SABRE: Payback
+
+Old Title:
+
+	Sabre Commandos Ep. 2 [SP/COOP-4]
+
+*********************************************************************************************************************************
+
+Author:
+
+	AlphaDog
+	
+	Contact: jakedg789@gmail.com
+
+*********************************************************************************************************************************
+
+Mission Version: 1.0
+	
+	V1.0 - Official Release
+	
+	V1.1 
+		- Fixed locality issue that could cause the AI not to spawn into the helicopter.
+		- Fixed the mission possibly  failing due to a trigger not being deleted in time.
+		- Changed the texture on a TV from jpeg to a paa file.
+	
+	V1.2
+		- Updated to Phycho's revive v24062017 (This should fix the AI not moving when getting revived, which occured in a earlier version.)
+		- Added new parameters (Stealth, Fatigue, Custom difficulty)
+		- The extraction chopper can now be shot down and the mission now fails if that happens
+		- The mission will now fail if all of members Sabre Team are down at the same time
+		- Fixed a texture not appearing error
+		- Updated some sections of the briefing
+		- Tweaked some of the scripts to match my current mission format
+		- Updated functions library
+	
+	V1.3
+		- Potentially fixed the AI not being teleported into the insertion helicopter.
+		- Added vehicles to the locations where the spotter could be located.
+		- The spotter's location is revealed upon securing the intel documents.
+		- The mission should no longer fail because "Blazerunner was shot down", which occurred at the beginning after Blazerunner dropped off the team.
+	
+*********************************************************************************************************************************
+
+Released:
+
+	July 4, 2017
+
+*********************************************************************************************************************************
+
+Copyright Disclaimer:
+
+	© Jacob D. Gidley, 2017
+	ALL RIGHTS RESERVED. 
+
+	No part of this mission or any of its contents may be reproduced, copied, modified or adapted, without the prior written consent of the author.
+	Commercial use and/or distribution of the mission is not allowed without express and prior written consent of the author. 
+	This mission is a work of fiction. Names, characters, places and incidents either are products of the author’s imagination or are used fictitiously. Any resemblance to actual events or locales or persons, living or dead, is entirely coincidental.
+	The author bears no responsibility for anything caused by downloading and/or playing this mission. In the case of any damage to your PC or your data, the author bears no responsibility for it.
+	You can download and/or play the mission at your own risk.
+	
+*********************************************************************************************************************************
+
+Music Credits:
+
+	DISCLAIMER: I did not create, nor was I involved in the creation of any of the songs used in this mission. All ownership rights are property of their respective owners.
+	
+	- Agent by Sovereign
+	- Blackout by Sovereign
+	- They Call Me Trinity by Franco Micalizzi
+	
+**********************************************************************************************************************************
+
+Thank you:
+
+	- The mission testers
+	- The BIS community
+	- Those of you who took the time to play my mission
+
+**********************************************************************************************************************************
