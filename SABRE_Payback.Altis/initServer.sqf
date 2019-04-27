@@ -6,6 +6,7 @@ if (!isServer) exitWith {};
 execVM "briefing.sqf";
 execVM "Scripts\serverTaskTrack.sqf";
 execVM "Scripts\spotterPos.sqf";
+[insHeli] execVM "Scripts\heliLight.sqf";  // Create red light inside of heli
 
 /**** REMOTE EXECS ****/
 // Add action to ammoboxes
@@ -37,6 +38,32 @@ switch (_paramTime) do
 	case 2: // Evening
 	{
 		setDate [2035, 6, 24, 17, 43];
+	};
+};
+
+// Set weather
+_paramWeather = "Weather" call BIS_fnc_getParamValue;
+switch (_paramWeather) do 
+{
+	case 0: // Clear
+	{
+		[0] call BIS_fnc_setOvercast;
+	};
+	case 1: // Cloudy
+	{
+		[0.25] call BIS_fnc_setOvercast;
+	};
+	case 2: // Overcast
+	{
+		[0.5] call BIS_fnc_setOvercast;
+	};
+	case 3: // Rainy
+	{
+		[0.75] call BIS_fnc_setOvercast;
+	};
+	case 4: // Stormy
+	{
+		[1] call BIS_fnc_setOvercast;
 	};
 };
 
@@ -233,6 +260,17 @@ warlord setDir (_lordPos select 1);
 	_x setSkill ["commanding", 0.95];
 	_x setSkill ["general", 0.95];
 } forEach units sabre;
+
+// Randomize fuel levels for all cars except the starting offroad at the insertion
+[] spawn 
+{
+	{
+		if (_x isKindOf "Car" && _x != infoTruck) then 
+		{
+			_x setFuel (random [0.20, 0.50, 0.90]);
+		};
+	} forEach vehicles;
+};
 
 // Constant check if everyone is down
 [] spawn 

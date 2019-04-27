@@ -1,9 +1,10 @@
 author = "AlphaDog";
 onloadname = "SABRE: Payback";
-onLoadMission = "Payback's a bitch!";
 loadScreen =  "images\loadImg.jpg";
+onLoadMission = "Payback's a bitch!";
+overviewPicture = "images\loadImg.jpg";
+overviewText = "Play as NATO's newly formed commando team during their first mission to rescue a sniper from an overwhelming force.";
 doneKeys[] = {"MissionCompleted"};
-
 
 //--------------------------------------------------------------
 //------------------------AIS INJURY----------------------------
@@ -72,8 +73,13 @@ class Params
 		default = 0;
 	};
 	
-	#define WEATHER_DEFAULT		25
-	#include "\a3\functions_f\Params\paramWeather.hpp"
+	class Weather
+	{
+		title = "Weather";
+		values[] = {0,1,2,3,4};
+		texts[] = {"Clear","Cloudy","Overcast","Rainy","Stormy"};
+		default = 1;
+	};
 	
 	class Difficulty
 	{

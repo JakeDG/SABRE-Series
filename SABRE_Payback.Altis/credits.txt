@@ -43,6 +43,21 @@ Mission Version: 1.0
 		- The spotter's location is revealed upon securing the intel documents.
 		- The mission should no longer fail because "Blazerunner was shot down", which occurred at the beginning after Blazerunner dropped off the team.
 	
+	V1.4
+		- Fixed the "missing paramWeather.hpp" bug
+		- Added dynamic simulation to improve mission performance
+		- Updated to the latest version of Psycho's Revive (v3072018)
+		- Changed how the intro and heli-ride text was displayed
+		- Added credits to the song: Top Secret by Sovereign
+		- Changed Blazerunner's red light flashing script to be run by the server
+		- Added better subtitles that should be centered to the screen
+		- Added blood under bodies at insertion
+		- Changed Sabre engineer's loadout to match SABRE: Commandos's loadout
+		- Added autosaves for singleplayer
+		- Unlocked most wheeled vehicles
+		- All wheeled vehicles fuel levels are randomized from 20% - 90%
+		- Outro music now starts playing when helicopter gets close to the extraction point
+	
 *********************************************************************************************************************************
 
 Released:
@@ -70,6 +85,7 @@ Music Credits:
 	
 	- Agent by Sovereign
 	- Blackout by Sovereign
+	- Top Secret by Sovereign
 	- They Call Me Trinity by Franco Micalizzi
 	
 **********************************************************************************************************************************

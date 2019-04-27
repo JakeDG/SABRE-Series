@@ -43,7 +43,7 @@
 	
 	["Credits", "Testing/Feedback", "<font color='#D22E2E' size='20'>Mission Testers:</font><br/>Andrew M.<br/>Dylan C.<br/>Garrett S.<br/>James C.<br/><br/>Thanks for the feedback guys!"],
 	
-	["Credits", "Music", "<font color='#D22E2E' size='20'>Music Credits:</font><br/><font color='#D22E2E'>Blackout</font> by Sovereign<br/><font color='#D22E2E'>Agent</font> by Sovereign<br/><font color='#D22E2E'>They Call Me Trinity</font> by Franco Micalizzi"],
+	["Credits", "Music", "<font color='#D22E2E' size='20'>Music Credits:</font><br/><font color='#D22E2E'>Blackout</font> by Sovereign<br/><font color='#D22E2E'>Agent</font> by Sovereign<br/><font color='#D22E2E'>Top Secret</font> by Sovereign<br/><font color='#D22E2E'>They Call Me Trinity</font> by Franco Micalizzi"],
 	
 	["Credits", "Special Thanks", "<font color='#D22E2E' size='20'>Thank You:</font><br/><font color='#D22E2E'>Varanon</font> for FHQ Tasktracker (Great tool for making multiplayer compatible tasks)<br/><font color='#D22E2E'>Revo</font> for 3den Enhanced (Excellent improvements to the 3D editor)<br/><font color='#D22E2E'>LSD</font> for ZEC - Zeus and Eden Templates / Building Compositions (Saved me so much time)<br/><font color='#D22E2E'>Psycho</font> for his excellent revive script<br/><font color='#D22E2E'>Sovereign</font> for his incredible stealth music."],
 	

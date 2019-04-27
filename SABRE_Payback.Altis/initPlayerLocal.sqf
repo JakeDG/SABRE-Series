@@ -35,11 +35,6 @@ if (_paramfatigue == 0) then
 	player enableFatigue false;
 };
 
-if (alive insHeli) then
-{
-	[insHeli] execVM "Scripts\heliLight.sqf";  // Create red light inside of heli
-};
-
 100 cutText ["Loading Complete", "BLACK FADED", 1];
 waitUntil{!isNil "BIS_fnc_init"};
 [player] call AD_fnc_clientLoaded;

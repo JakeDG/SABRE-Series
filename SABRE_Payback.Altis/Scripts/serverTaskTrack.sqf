@@ -20,7 +20,9 @@ if (!isServer) exitWith {};
 	["Scripts\heliIntro.sqf"] remoteExec ["BIS_fnc_execVM",[0,-2] select (isMultiplayer && isDedicated)];
 	sleep 2.0;
 	
-	["<t size='0.6'><t color='#D22E2E'>Blazerunner:</t> All aboard? Okay, here we go!</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 10, 0.25, 0, 198] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
+	[
+		["Blazerunner","All aboard? Okay, here we go!",10], AD_fnc_subtitle
+	] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
 	
 	sleep 5.0;
 	
@@ -52,9 +54,13 @@ if (!isServer) exitWith {};
 [] spawn
 {
 	waitUntil {sleep 1.0; (!isNil "meetContact")};
-	[[], "Scripts\infoCon.sqf"] remoteExec ["BIS_fnc_execVM", [0,-2] select (isMultiplayer && isDedicated)];
+	["Scripts\infoCon.sqf"] remoteExec ["BIS_fnc_execVM", [0,-2] select (isMultiplayer && isDedicated)];
 	waitUntil{sleep 1.0; (!isNil "convoDone")};
 	["talkTask", "succeeded", "docsTask", "fuelTask", "planeTask", "officersTask"] call FHQ_fnc_ttSetTaskStateAndNext;
+	
+	// Save the game in singleplayer
+	if (!isMultiplayer && savingEnabled) then {saveGame;};
+	sleep 1.0;
 	
 	"TopSecret" remoteExec ["playMusic",[0,-2] select (isMultiplayer && isDedicated)];
 };
@@ -68,6 +74,11 @@ if (!isServer) exitWith {};
 	["docsTask", "succeeded", "talkTask", "fuelTask", "planeTask", "officersTask"] call FHQ_fnc_ttSetTaskStateAndNext;
 	["shipOpMkr", "ColorRed", "X_shipOp"] call AD_fnc_crossMkr;
 	sleep 3.0;
+	
+	// Save the game in singleplayer
+	if (!isMultiplayer && savingEnabled) then {saveGame;};
+	sleep 1.0;
+
 	parseText format ["<t color='#FFFFFF' size='2'>Spotter Intel Found!</t><br/><t color='#D22E2E' size='1.3'>While looking through the documents you found something that mentions where the militia is keeping the captured spotter.<br/>The location has been marked on your map!</t>"] remoteExec ["hint", [0,-2] select (isMultiplayer && isDedicated)];
 	
 	// Set Marker
@@ -101,6 +112,10 @@ if (!isServer) exitWith {};
 	
 	["airfieldTasks", "succeeded", "talkTask", "docsTask", "officersTask"] call FHQ_fnc_ttSetTaskStateAndNext;
 	["airfieldOpMkr", "ColorRed", "X_airfield"] call AD_fnc_crossMkr;
+	
+	// Save the game in singleplayer
+	if (!isMultiplayer && savingEnabled) then {saveGame;};
+	sleep 1.0;
 };
 
 // Kill officers task
@@ -110,6 +125,10 @@ if (!isServer) exitWith {};
 	
 	["officersTask", "succeeded", "talkTask", "docsTask", "fuelTask", "planeTask"] call FHQ_fnc_ttSetTaskStateAndNext;
 	["killMkr", "ColorRed", "X_officers"] call AD_fnc_crossMkr;
+	
+	// Save the game in singleplayer
+	if (!isMultiplayer && savingEnabled) then {saveGame;};
+	sleep 1.0;
 };
 
 [] spawn // Update number of officers left to the players
@@ -130,10 +149,14 @@ if (!isServer) exitWith {};
 	sleep 1.0;
 	
 	// Baseplate messege
-	["<t size='0.6'><t color='#D22E2E'>Baseplate:</t> Excellent job out there, Sabre! Now it's time to finish the militia off once and for all.</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 10, 0.25, 0, 198] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
+	[
+		["Baseplate","Excellent job out there, Sabre! Now it's time to finish the militia off once and for all.",10,"RadioAmbient2"], AD_fnc_subtitle
+	] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
 	sleep 12.0;
 	
-	["<t size='0.6'><t color='#D22E2E'>Baseplate:</t> Head to Thronos Castle, clear it out, and kill the militia's warlord.</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 10, 0.25, 0, 199] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
+	[
+		["Baseplate","Head to Thronos Castle, clear it out, and kill the militia's warlord. Baseplate, out.",10,"RadioAmbient6"], AD_fnc_subtitle
+	] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
 	sleep 2.5;
 	
 	"Agent" remoteExec ["playMusic",[0,-2] select (isMultiplayer && isDedicated)];
@@ -174,7 +197,15 @@ if (!isServer) exitWith {};
 		
 		["raidTasks", "succeeded"] call FHQ_fnc_ttSetTaskState;
 		["castleMkr", "ColorRed", "X_castle"] call AD_fnc_crossMkr;
+		
+		// Save the game in singleplayer
+		if (!isMultiplayer && savingEnabled) then {saveGame;};
+		sleep 1.0;
 	};
+	
+	// Save the game in singleplayer
+	if (!isMultiplayer && savingEnabled) then {saveGame;};
+	sleep 1.0;
 };
 /////////////////////////////////////// Secondary tasks //////////////////////////////////////////////////////////////
 
@@ -185,6 +216,11 @@ if (!isServer) exitWith {};
 	["spotterTask", "succeeded"] call FHQ_fnc_ttSetTaskState;
 	sleep 4.0;
 	["secTasks", "succeeded"] call FHQ_fnc_ttSetTaskState;
+	sleep 3.0;
+	
+	// Save the game in singleplayer
+	if (!isMultiplayer && savingEnabled) then {saveGame;};
+	sleep 1.0;
 };
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -199,8 +235,6 @@ if (!isServer) exitWith {};
 	
 	// Activate extraction
 	execVM "Scripts\extract.sqf";
-	
-	"Trinity" remoteExec ["playMusic",[0,-2] select (isMultiplayer && isDedicated)];
 };
 
 // Insertion stuff
@@ -212,14 +246,18 @@ if (!isServer) exitWith {};
 	
 	{doGetOut _x} forEach units sabre;
 	
-	["<t size='0.6'><t color='#D22E2E'>Blazerunner:</t> Alright guys, this is your stop!</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 10, 0.25, 0, 198] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
+	[
+		["Blazerunner","Alright guys, this is your stop!",10], AD_fnc_subtitle
+	] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
 	
 	waitUntil {sleep 1.0; {!(_x in insHeli)} count units sabre == {alive _x} count units sabre};
 	
 	[insHeli,true] remoteExec ["lock", [0,-2] select (isMultiplayer && isDedicated), true];
 	sleep 1.0;
 	
-	["<t size='0.6'><t color='#D22E2E'>Blazerunner:</t> Good luck out there, Sabre! I'm RTB.</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 10, 0.25, 0, 198] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
+	[
+		["Blazerunner","Good luck out there, Sabre! I'm RTB.",10,"RadioAmbient6"], AD_fnc_subtitle
+	] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
 	
 	sleep 1.0;
 

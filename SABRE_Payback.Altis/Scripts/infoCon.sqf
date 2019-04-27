@@ -3,25 +3,25 @@ if (!(local player)) exitWith {};
 
 if (alive informant && ((player distance informant) < 15)) then 
 {
-	["<t size='0.6'><t color='#D22E2E'>Rigas:</t> About time you guys arrived. I was starting to worry.</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 10, 0.25, 0, 198] spawn BIS_fnc_dynamicText;
+	["Rigas", "About time you guys arrived. I was starting to worry.", 10] call AD_fnc_subtitle;
 };
 sleep 8.0;
 
 if (alive informant && ((player distance informant) < 15)) then 
 {
-	["<t size='0.6'><t color='#D22E2E'>Rigas:</t> These thugs showed up just before you guys got here. Luckily, they didn't have a clue who they were fuckin' with.</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 10, 0.25, 0, 198] spawn BIS_fnc_dynamicText;
+	["Rigas", "These thugs showed up just before you guys got here. Luckily, they didn't have a clue who they were fuckin' with.", 10] call AD_fnc_subtitle;
 };
 sleep 8.0;
 
 if (alive informant && ((player distance informant) < 15)) then 
 {
-	["<t size='0.6'><t color='#D22E2E'>Rigas:</t> Anyways, here are the keys to my offroad. I won't be needing it anymore. Also, I put a drone I kept from my years at ION in the back if you need it.</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 10, 0.25, 0, 198] spawn BIS_fnc_dynamicText;
+	["Rigas", "Anyways, here are the keys to my offroad. I won't be needing it anymore. Also, I put a drone I kept from my years at ION in the back if you need it.", 10] call AD_fnc_subtitle;
 };
 sleep 8.0;
 
 if (alive informant && ((player distance informant) < 15)) then 
 {
-	["<t size='0.6'><t color='#D22E2E'>Rigas:</t> One more thing before I go. The militia's locked down the area. Expect heavy resistance from those lowlifes. They won't go down easy!</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 10, 0.25, 0, 198] spawn BIS_fnc_dynamicText;
+	["Rigas", "One more thing before I go. The militia's locked down the area. Expect heavy resistance from those lowlifes. They won't go down easy!", 10] call AD_fnc_subtitle;
 };
 sleep 8.0;
 
@@ -31,8 +31,7 @@ informant enableAI "MOVE";
 
 if (alive informant && ((player distance informant) < 15)) then 
 {
-	["<t size='0.6'><t color='#D22E2E'>Rigas:</t> Godspeed fellas! I'll see you on the other side!</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 10, 0.25, 0, 198] spawn BIS_fnc_dynamicText;
+	["Rigas", "Godspeed fellas! I'll see you on the other side!", 10] call AD_fnc_subtitle;
 };
 
 convoDone = true;
-

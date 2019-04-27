@@ -4,13 +4,20 @@ if (!isServer) exitWith {};
 [] spawn
 {
 	// Baseplate message
-	["<t size='0.6'><t color='#D22E2E'>Baseplate:</t> Great job, Sabre! Altis is a much safer place without those scumbags.</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 10, 0.25, 0, 198] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
-	sleep 11.0;
-	["<t size='0.6'><t color='#D22E2E'>Baseplate:</t> We need you guys back at base immediately. We're sending Blazerunner to extract you.</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 10, 0.25, 0, 199] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
+	[
+		["Baseplate","Great job, Sabre! Altis is a much safer place without those scumbags.",10,"RadioAmbient8"], AD_fnc_subtitle
+	] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
+	sleep 12.0;
+	
+	[
+		["Baseplate","We need you guys back at base immediately. We're sending Blazerunner to extract you.",10,"RadioAmbient2"], AD_fnc_subtitle
+	] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
 	sleep 12.0;
 
 	// Blazerunner messege
-	["<t size='0.6'><t color='#D22E2E'>Blazerunner:</t> I'm inbound, Sabre. ETA 90 seconds. LZ's on your map.</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 10, 0.25, 0, 198] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
+	[
+		["Blazerunner","I'm inbound, Sabre. ETA 90 seconds. LZ's on your map.",10,"RadioAmbient6"], AD_fnc_subtitle
+	] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
 };
 
 // Set Marker and LZ
@@ -31,8 +38,10 @@ _extHeli = (_extVeh select 0);
 [_extHeli] spawn
 {
 	waitUntil{sleep 1.0; !alive (_this select 0)};
-	
-	["<t size='0.6'><t color='#D22E2E'>Baseplate:</t> Shit, Sabre! Blazerunner is down! Mission failed!</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 10, 0.25, 0, 198] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
+
+	[
+		["Baseplate","Shit, Sabre! Blazerunner is down! Mission failed!",10,"RadioAmbient6"], AD_fnc_subtitle
+	] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
 	sleep 5.0;
 	["End_blazeDead",false,true,true] call BIS_fnc_endMission;
 };
@@ -72,10 +81,16 @@ _wp2 setWaypointStatements ["{(_x in vehicle this)} count units sabre == {alive 
 waitUntil { (_extHeli distance extLZ) < 35 };
 [_extHeli, "OPEN"] call AD_fnc_animHeliDoors;
 
+// Play music
+"Trinity" remoteExec ["playMusic",[0,-2] select (isMultiplayer && isDedicated)];
+
 // Wait until Blazerunner has landed
 waitUntil {isTouchingGround _extHeli};
 sleep 1.0;
-["<t size='0.6'><t color='#D22E2E'>Blazerunner:</t> Alright Sabre, I've landed. Hop in when you're ready to leave!</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 10, 0.25, 0, 198] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
+
+[
+	["Blazerunner","Alright Sabre, I've landed. Hop in when you're ready to leave!",10,"RadioAmbient8"], AD_fnc_subtitle
+] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
 
 // Wait until everyone is in Blazerunner 
 waitUntil { ({(_x in _extHeli)} count units sabre == {alive _x} count units sabre) };
@@ -83,7 +98,9 @@ waitUntil { ({(_x in _extHeli)} count units sabre == {alive _x} count units sabr
 [_extHeli,true] remoteExec ["lock", [0,-2] select (isMultiplayer && isDedicated), true];
 sleep 1.0;
 
-["<t size='0.6'><t color='#D22E2E'>Blazerunner:</t> Baseplate this is Blazerunner. Sabre is aboard and we are RTB.</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 10, 0.25, 0, 198] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
+[
+	["Blazerunner","Baseplate this is Blazerunner, Sabre is aboard and we are RTB, out.",10,"RadioAmbient2"], AD_fnc_subtitle
+] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
 
 _wp3 = _extCrew addWaypoint [(getMarkerPos "extHeliEnd"), 0];
 [_extCrew, 2] setWaypointBehaviour "UNCHANGED";

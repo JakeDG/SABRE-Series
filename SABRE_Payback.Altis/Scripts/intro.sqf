@@ -29,10 +29,12 @@ sleep 1.0;
 100 cutText ["", "BLACK FADED", 999];
 0 fadeMusic 1; // Fade music back in
 10 fadeSound 1; // Fade sound back in
-sleep 4.0;
 
-["<t  size = '1.0'>Two days after the rescue operation...</t>", safeZoneX+0, safeZoneY+safeZoneH-0.9, 4, 4, 0, 200] spawn BIS_fnc_dynamicText;
-sleep 10.0;
+sleep 2.0;
+101 cutText ["<t size='3.0'>Two days after the rescue operation</t>", "BLACK", 3.0,true,true];
+sleep 6.0;
+101 cutFadeOut 1.0;
+sleep 4.5;
 100 cutText ["", "BLACK IN", 15];
 player enableSimulation true;
 enableRadio true;

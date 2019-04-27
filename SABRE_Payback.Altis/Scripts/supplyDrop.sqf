@@ -2,8 +2,11 @@
 if (!isServer) exitWith {};
 
 // Blazerunner messege
-["<t size='0.6'><t color='#D22E2E'>Blazerunner:</t> Sabre, I'm imbound with some supplies for you. I'll be making the drop at Aristi.</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 10, 0.25, 0, 198] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
+[
+	["Blazerunner","Sabre, I'm inbound with some supplies for you. I'll be making the drop at Aristi.",10,"RadioAmbient2"], AD_fnc_subtitle
+] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
 sleep 12.0;
+
 parsetext format ["<t color='#FFFFFF' size='2'>Blazerunner is dropping off supplies for you!</t><br/><t color='#D22E2E' size='1.3'>The drop location has been marked on your map!</t>"] remoteExec ["hint", [0,-2] select (isMultiplayer && isDedicated)];
 
 // Set Marker
@@ -42,11 +45,13 @@ _wp1 setWaypointSpeed "FULL";
 [_supplyHeli] spawn 
 {
 	waitUntil {isNull (getSlingLoad (_this select 0))};
-	["<t size='0.6'><t color='#D22E2E'>Blazerunner:</t> Ok Sabre, I've dropped off the supplies at the designated location. I'm RTB.</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 10, 0.25, 0, 198] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
+	[
+		["Blazerunner","Ok Sabre, I've dropped off the supplies at the designated location. I'm RTB.",10,"RadioAmbient8"], AD_fnc_subtitle
+	] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
 };
 
 // Leave waypoint
 _wp2 = _supplyCrew addWaypoint [(getMarkerPos "heliSpawnMkr"), 0];
 [_supplyCrew, 2] setWaypointBehaviour "CARELESS";
 _wp2 setWaypointType "MOVE";
-_wp2 setWaypointStatements ["true", "{deleteVehicle vehicle _x} forEach thislist;{deleteVehicle _x} forEach thislist; deleteGroup (group this);"];
+_wp2 setWaypointStatements ["true", "{deleteVehicle vehicle _x} forEach thislist; {deleteVehicle _x} forEach thislist; deleteGroup (group this);"];

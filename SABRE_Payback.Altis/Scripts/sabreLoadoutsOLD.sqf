@@ -63,7 +63,6 @@ switch (_unitClass) do
 				for "_i" from 1 to 5 do {_unit addItemToBackpack "1Rnd_Smoke_Grenade_shell";};
 				for "_i" from 1 to 5 do {_unit addItemToBackpack "HandGrenade";};
 				for "_i" from 1 to 5 do {_unit addItemToBackpack "SmokeShell";};
-				_unit addItemToBackpack "Laserbatteries";
 				_unit addHeadgear "H_MilCap_mcamo";
 
 				_unit addWeapon "arifle_SPAR_01_GL_blk_F";
@@ -71,14 +70,13 @@ switch (_unitClass) do
 				_unit addPrimaryWeaponItem "optic_ERCO_blk_F";
 				_unit addWeapon "hgun_Pistol_heavy_01_F";
 				_unit addHandgunItem "optic_MRD";
-				_unit addHandgunItem "acc_flashlight_pistol";
 				_unit addWeapon "Laserdesignator_03";
 
 				_unit linkItem "ItemMap";
 				_unit linkItem "ItemCompass";
 				_unit linkItem "ItemWatch";
 				_unit linkItem "ItemRadio";
-				_unit linkItem "ItemGPS";
+				_unit linkItem "B_UavTerminal";
 				_unit linkItem "NVGogglesB_blk_F";
 			
 				if (isStealth) then
@@ -100,7 +98,6 @@ switch (_unitClass) do
 				for "_i" from 1 to 5 do {_unit addItemToBackpack "1Rnd_Smoke_Grenade_shell";};
 				for "_i" from 1 to 5 do {_unit addItemToBackpack "HandGrenade";};
 				for "_i" from 1 to 5 do {_unit addItemToBackpack "SmokeShell";};
-				_unit addItemToBackpack "Laserbatteries";
 				_unit addHeadgear "H_MilCap_mcamo";
 
 				_unit addWeapon "arifle_SPAR_01_GL_blk_F";
@@ -108,14 +105,13 @@ switch (_unitClass) do
 				_unit addPrimaryWeaponItem "optic_ERCO_blk_F";
 				_unit addWeapon "hgun_Pistol_heavy_01_F";
 				_unit addHandgunItem "optic_MRD";
-				_unit addHandgunItem "acc_flashlight_pistol";
 				_unit addWeapon "Laserdesignator_03";
 
 				_unit linkItem "ItemMap";
 				_unit linkItem "ItemCompass";
 				_unit linkItem "ItemWatch";
 				_unit linkItem "ItemRadio";
-				_unit linkItem "ItemGPS";
+				_unit linkItem "B_UavTerminal";
 				_unit linkItem "NVGogglesB_blk_F";
 				
 				if (isStealth) then
@@ -137,7 +133,6 @@ switch (_unitClass) do
 				for "_i" from 1 to 5 do {_unit addItemToBackpack "1Rnd_Smoke_Grenade_shell";};
 				for "_i" from 1 to 5 do {_unit addItemToBackpack "HandGrenade";};
 				for "_i" from 1 to 5 do {_unit addItemToBackpack "SmokeShell";};
-				_unit addItemToBackpack "Laserbatteries";
 				_unit addHeadgear "H_MilCap_mcamo";
 		
 				_unit addWeapon "arifle_TRG21_GL_F";
@@ -145,14 +140,13 @@ switch (_unitClass) do
 				_unit addPrimaryWeaponItem "optic_Hamr";
 				_unit addWeapon "hgun_Pistol_heavy_01_F";
 				_unit addHandgunItem "optic_MRD";
-				_unit addHandgunItem "acc_flashlight_pistol";
 				_unit addWeapon "Laserdesignator_03";
 
 				_unit linkItem "ItemMap";
 				_unit linkItem "ItemCompass";
 				_unit linkItem "ItemWatch";
 				_unit linkItem "ItemRadio";
-				_unit linkItem "ItemGPS";
+				_unit linkItem "B_UavTerminal";
 				_unit linkItem "NVGoggles_OPFOR";
 				
 				if (isStealth) then
@@ -477,15 +471,14 @@ switch (_unitClass) do
 				for "_i" from 1 to 3 do {_unit addItemToVest "FirstAidKit";};
 				for "_i" from 1 to 3 do {_unit addItemToVest "HandGrenade";};
 				for "_i" from 1 to 3 do {_unit addItemToVest "SmokeShell";};
-				for "_i" from 1 to 2 do {_unit addItemToVest "150Rnd_556x45_Drum_Mag_F";};
+				for "_i" from 1 to 9 do {_unit addItemToVest "30Rnd_556x45_Stanag";};
 				_unit addBackpack "B_TacticalPack_mcamo";
 				_unit addItemToBackpack "ToolKit";
 				for "_i" from 1 to 5 do {_unit addItemToBackpack "DemoCharge_Remote_Mag";};
-				for "_i" from 1 to 2 do {_unit addItemToBackpack "150Rnd_556x45_Drum_Mag_F";};
 				_unit addHeadgear "H_HelmetSpecB_snakeskin";
 
 				comment "Add weapons";
-				_unit addWeapon "arifle_SPAR_02_blk_F";
+				_unit addWeapon "arifle_SPAR_01_blk_F";
 				_unit addPrimaryWeaponItem "acc_pointer_IR";
 				_unit addPrimaryWeaponItem "optic_Arco_blk_F";
 				_unit addPrimaryWeaponItem "bipod_01_F_blk";
@@ -497,10 +490,8 @@ switch (_unitClass) do
 				_unit linkItem "ItemCompass";
 				_unit linkItem "ItemWatch";
 				_unit linkItem "ItemRadio";
-				_unit linkItem "ItemGPS";
+				_unit linkItem "B_UavTerminal";
 				_unit linkItem "NVGogglesB_blk_F";
-				
-				_unit addItemToVest "150Rnd_556x45_Drum_Mag_F";
 				
 				if (isStealth) then
 				{
@@ -518,15 +509,14 @@ switch (_unitClass) do
 				for "_i" from 1 to 3 do {_unit addItemToVest "FirstAidKit";};
 				for "_i" from 1 to 3 do {_unit addItemToVest "HandGrenade";};
 				for "_i" from 1 to 3 do {_unit addItemToVest "SmokeShell";};
-				for "_i" from 1 to 2 do {_unit addItemToVest "150Rnd_556x45_Drum_Mag_F";};
+				for "_i" from 1 to 9 do {_unit addItemToVest "30Rnd_556x45_Stanag";};
 				_unit addBackpack "B_TacticalPack_mcamo";
 				_unit addItemToBackpack "ToolKit";
 				for "_i" from 1 to 5 do {_unit addItemToBackpack "DemoCharge_Remote_Mag";};
-				for "_i" from 1 to 2 do {_unit addItemToBackpack "150Rnd_556x45_Drum_Mag_F";};
 				_unit addHeadgear "H_HelmetSpecB_snakeskin";
 
 				comment "Add weapons";
-				_unit addWeapon "arifle_SPAR_02_blk_F";
+				_unit addWeapon "arifle_SPAR_01_blk_F";
 				_unit addPrimaryWeaponItem "acc_pointer_IR";
 				_unit addPrimaryWeaponItem "optic_Arco_blk_F";
 				_unit addPrimaryWeaponItem "bipod_01_F_blk";
@@ -538,10 +528,8 @@ switch (_unitClass) do
 				_unit linkItem "ItemCompass";
 				_unit linkItem "ItemWatch";
 				_unit linkItem "ItemRadio";
-				_unit linkItem "ItemGPS";
+				_unit linkItem "B_UavTerminal";
 				_unit linkItem "NVGogglesB_blk_F";
-				
-				_unit addItemToVest "150Rnd_556x45_Drum_Mag_F";
 				
 				if (isStealth) then
 				{
@@ -556,32 +544,30 @@ switch (_unitClass) do
 				for "_i" from 1 to 2 do {_unit addItemToUniform "FirstAidKit";};
 				for "_i" from 1 to 3 do {_unit addItemToUniform "16Rnd_9x21_Mag";};
 				_unit addVest "V_PlateCarrierGL_mtp";
-				for "_i" from 1 to 3 do {_unit addItemToVest "FirstAidKit";};
+				_unit addItemToVest "FirstAidKit";
 				for "_i" from 1 to 3 do {_unit addItemToVest "HandGrenade";};
 				for "_i" from 1 to 3 do {_unit addItemToVest "SmokeShell";};
-				for "_i" from 1 to 2 do {_unit addItemToVest "100Rnd_65x39_caseless_mag";};
+				for "_i" from 1 to 9 do {_unit addItemToVest "30Rnd_65x39_caseless_mag";};
 				_unit addBackpack "B_TacticalPack_mcamo";
 				_unit addItemToBackpack "ToolKit";
+				for "_i" from 1 to 2 do {_unit addItemToBackpack "FirstAidKit";};
 				for "_i" from 1 to 5 do {_unit addItemToBackpack "DemoCharge_Remote_Mag";};
-				for "_i" from 1 to 2 do {_unit addItemToBackpack "100Rnd_65x39_caseless_mag";};
 				_unit addHeadgear "H_HelmetSpecB_snakeskin";
 
 				comment "Add weapons";
-				_unit addWeapon "arifle_MX_SW_Black_F";
+				_unit addWeapon "arifle_MX_Black_F";
 				_unit addPrimaryWeaponItem "acc_pointer_IR";
 				_unit addPrimaryWeaponItem "optic_Arco_blk_F";
 				_unit addPrimaryWeaponItem "bipod_01_F_blk";
 				_unit addWeapon "hgun_P07_F";
 				_unit addWeapon "Rangefinder";
-				
-				_unit addItemToVest "100Rnd_65x39_caseless_mag";
 
 				comment "Add items";
 				_unit linkItem "ItemMap";
 				_unit linkItem "ItemCompass";
 				_unit linkItem "ItemWatch";
 				_unit linkItem "ItemRadio";
-				_unit linkItem "ItemGPS";
+				_unit linkItem "B_UavTerminal";
 				_unit linkItem "NVGoggles_OPFOR";
 				
 				if (isStealth) then
