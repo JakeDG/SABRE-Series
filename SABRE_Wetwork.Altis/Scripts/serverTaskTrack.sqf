@@ -7,18 +7,18 @@ if (!isServer) exitWith {};
 	["compoundTask", "succeeded"] call FHQ_fnc_ttSetTaskState;
 	sleep 3.0;
 
-	// Baseplate messege
-	[["RadioAmbient2"],AD_fnc_soundAmp] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
-	["<t size='0.6'><t color='#D22E2E'>Baseplate:</t> Richman's not there? Dammit!</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 7, 0.25, 0, 198] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
+	// Baseplate message
+	[
+		["Baseplate","Richman's not there? Dammit!",7.0,"RadioAmbient6"], AD_fnc_subtitle
+	] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
+	sleep 10.0;
+	
+	[
+		["Baseplate","Hack into Richman's computer in his house to give us remote access from here. Perhaps we can find some intel on his whereabouts.",10.0,"RadioAmbient2"], AD_fnc_subtitle
+	] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
 	sleep 5.0;
 	
-	["<t size='0.6'><t color='#D22E2E'>Baseplate:</t> Hack into Richman's computer in his house to give us remote access from here.</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 10, 0.25, 0, 198] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
-	sleep 8.0;
-	
-	["<t size='0.6'><t color='#D22E2E'>Baseplate:</t> Perhaps we can find some intel on his whereabouts.</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 8, 0.25, 0, 198] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
-	sleep 3.0;
-	
-	[compObj, "Hack Computer", 10] call AD_fnc_hack; // Add action to keyboard
+	[compObj, "Hack Computer"] call AD_fnc_hack; // Add action to keyboard
 	
 	// Assign hacking objective
 	[sabre, [["hackTask", "primTasks"], "Hack <font color='#D22E2E'>Richman's computer</font> to help Baseplate discover where he might be located.", "Hack Richman's Computer", "", getPosATL compObj, "assigned", "INTERACT"]] call FHQ_fnc_ttAddTasks;
@@ -31,21 +31,26 @@ if (!isServer) exitWith {};
 		["hackTask", "succeeded"] call FHQ_fnc_ttSetTaskState;
 		sleep 3.0;
 		
-		// Baseplate messege
-		[["RadioAmbient6"],AD_fnc_soundAmp] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
-		["<t size='0.6'><t color='#D22E2E'>Baseplate:</t> Good job, Sabre! We're searching through his files. Stand by.</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 8, 0.25, 0, 198] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
-		sleep 12;
-		
-		[["RadioAmbient8"],AD_fnc_soundAmp] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
-		["<t size='0.6'><t color='#D22E2E'>Baseplate:</t> Wait, what the Hell? It seems like Richman has been doing business with the AAF in the area.</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 12, 0.25, 0, 198] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
+		// Baseplate message
+		[
+			["Baseplate","Good job, Sabre! We're searching through his files. Stand by.",8.0,"RadioAmbient6"], AD_fnc_subtitle
+		] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
 		sleep 10;
 		
-		["<t size='0.6'><t color='#D22E2E'>Baseplate:</t> Holy shit! According to some of these files, it seems that Richman and the AAF in this area have been working with CSAT spec ops for a few weeks now.</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 17, 0.25, 0, 198] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
-		sleep 14;
+		[
+			["Baseplate","Wait, what the Hell? It seems like Richman has been doing business with the AAF in the area.",10.0,"RadioAmbient8"], AD_fnc_subtitle
+		] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
+		sleep 12;
 		
-		[["RadioAmbient2"],AD_fnc_soundAmp] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
-		["<t size='0.6'><t color='#D22E2E'>Baseplate:</t> Change of plans, Sabre! Your new orders are to move to the AAF outpost south of you. Apparently CSAT brought some strange device there. Find it!</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 14, 0.25, 0, 198] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
-		sleep 2.0;
+		[
+			["Baseplate","Holy shit! According to some of these files, it seems that Richman and the AAF in this area have been working with CSAT spec ops for a few weeks now.",15.0,"RadioAmbient2"], AD_fnc_subtitle
+		] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
+		sleep 17;
+		
+		[
+			["Baseplate"," Change of plans, Sabre! Your new orders are to move to the AAF outpost south of you. Apparently CSAT brought some strange device there. Find it!",15.0,"RadioAmbient8"], AD_fnc_subtitle
+		] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
+		sleep 3.0;
 		
 		// Assign hacking objective
 		[sabre, [["outpostTask", "primTasks"], "Infiltrate the <marker name ='outpostMkr'>AAF outpost</marker> to the west of Selakano and try to look for the unidentified <font color='#D22E2E'>CSAT device</font>.", "Find the CSAT Device", "", getMarkerPos "outpostMkr", "assigned", "SEARCH"]] call FHQ_fnc_ttAddTasks;
@@ -60,11 +65,14 @@ if (!isServer) exitWith {};
 		[pwrTrans_2, "Shut Off Power", 8] call AD_fnc_pickPutHold; // Add shut off action to transformer.
 		sleep 6.0;
 		
-		[["RadioAmbient6"],AD_fnc_soundAmp] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
-		["<t size='0.6'><t color='#D22E2E'>Baseplate:</t> You are cleared to engage all AAF and CSAT forces at your discretion until otherwise instructed.</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 12, 0.25, 0, 198] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
-		sleep 10;
+		[
+			["Baseplate","You are cleared to engage all AAF and CSAT forces at your discretion until otherwise instructed.",10.0,"RadioAmbient2"], AD_fnc_subtitle
+		] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
+		sleep 12;
 		
-		["<t size='0.6'><t color='#D22E2E'>Baseplate:</t> Get it done, Sabre. Baseplate out.</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 12, 0.25, 0, 198] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
+		[
+			["Baseplate","Get it done, Sabre. Baseplate, out.",7.0,"RadioAmbient6"], AD_fnc_subtitle
+		] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
 	
 		// Outpost task /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		[] spawn
@@ -75,12 +83,15 @@ if (!isServer) exitWith {};
 			["outpostMkr", "ColorRed", "aafOutpost"] call AD_fnc_crossMkr;
 			sleep 3.0;
 			
-			// Baseplate messege
-			[["RadioAmbient2"],AD_fnc_soundAmp] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
-			["<t size='0.6'><t color='#D22E2E'>Baseplate:</t> Alright Sabre, we'll try to decipher this new intel, which will probably take a while.</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 8, 0.25, 0, 198] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
-			sleep 10;
+			// Baseplate message
+			[
+				["Baseplate","Alright Sabre, we'll try to decipher this new intel, which will probably take a while.",7.0,"RadioAmbient2"], AD_fnc_subtitle
+			] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
+			sleep 9.0;
 			
-			["<t size='0.6'><t color='#D22E2E'>Baseplate:</t> However, we have good news! We went through some more of Richman's intel and we found some locations he could be at. We're sending them to you now.</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 10, 0.25, 0, 198] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
+			[
+				["Baseplate","However, we have good news! We went through some more of Richman's intel and we found some locations he could be at. We're sending them to you now.",10.0,"RadioAmbient8"], AD_fnc_subtitle
+			] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
 			sleep 5.0;
 			
 			// Draw markers on Richman's locations
@@ -101,8 +112,9 @@ if (!isServer) exitWith {};
 			parsetext format ["<t color='#D22E2E' size='1.35'>Baseplate has marked Richman's possible locations on your map.</t>"] remoteExec ["hint", [0,-2] select (isMultiplayer && isDedicated)];
 			sleep 8;
 			
-			[["RadioAmbient6"],AD_fnc_soundAmp] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
-			["<t size='0.6'><t color='#D22E2E'>Baseplate:</t> Neutralize Richman and finish what you came here to do, gentlemen. Baseplate out.</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 10, 0.25, 0, 198] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
+			[
+				["Baseplate","Neutralize Richman and finish what you came here to do, gentlemen. Baseplate, out.",10.0,"RadioAmbient6"], AD_fnc_subtitle
+			] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
 			
 			// Kill Richman /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 			[] spawn
@@ -118,21 +130,21 @@ if (!isServer) exitWith {};
 				};
 				sleep 3.0;
 				
-				// Baseplate messege
-				[["RadioAmbient8"],AD_fnc_soundAmp] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
-				["<t size='0.6'><t color='#D22E2E'>Baseplate:</t> Excellent job, Sabre. The world won't miss that traitorous piece of filth.</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 10, 0.25, 0, 198] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
-				sleep 8;
+				// Baseplate message
+				[
+					["Baseplate","Excellent job, Sabre. The world won't miss that traitorous piece of filth. However, we have a much worse situation on our hands now!",10.0,"RadioAmbient8"], AD_fnc_subtitle
+				] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
+				sleep 12.0;
 				
-				["<t size='0.6'><t color='#D22E2E'>Baseplate:</t> However, we have a much worse situation on our hands now!</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 12, 0.25, 0, 198] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
-				sleep 10;
+				[
+					["Baseplate","According to the intel from that terminal you found earlier, CSAT has brought an experimental EMP onto Altian soil with the AAF's help!",15.0,"RadioAmbient2"], AD_fnc_subtitle
+				] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
+				sleep 17.0;
 				
-				["<t size='0.6'><t color='#D22E2E'>Baseplate:</t> According to the intel from that terminal you found earlier, CSAT has brought an experimental EMP onto Altian soil with the AAF's help!</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 14, 0.25, 0, 198] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
-				sleep 10;
-				
-				["<t size='0.6'><t color='#D22E2E'>Baseplate:</t> That EMP must be destroyed at all costs!</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 8, 0.25, 0, 198] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
-				sleep 6;
-				
-				["<t size='0.6'><t color='#D22E2E'>Baseplate:</t> It's currently located at an abandoned outpost to the southeast of Feres! Get there quickly, gentlemen!</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 12, 0.25, 0, 198] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
+				[
+					["Baseplate","That EMP must be destroyed at all costs! It's currently located at an abandoned outpost to the southeast of Feres! Get there quickly, gentlemen!",15.0,"RadioAmbient6"], AD_fnc_subtitle
+				] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
+				sleep 3.0;
 				
 				[sabre, [["empTask", "primTasks"], "Destroy the <font color='#D22E2E'>CSAT EMP</font> located at the <marker name='abanOutMkr'>abandoned outpost</marker> to the southeast of Feres.", "Destroy EMP", "", getPosATL csatEMP, "assigned", "DESTROY"]] call FHQ_fnc_ttAddTasks;
 				
@@ -160,17 +172,21 @@ if (!isServer) exitWith {};
 					_assWp1 setWaypointType "SAD";
 					sleep 3.0;
 					
-					// Baseplate messege
-					[["RadioAmbient6"],AD_fnc_soundAmp] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
-					["<t size='0.6'><t color='#D22E2E'>Baseplate:</t> Alright, very good, Sabre. It's time to get the hell out of there!</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 10, 0.25, 0, 198] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
-					sleep 8.0;
-					
-					["<t size='0.6'><t color='#D22E2E'>Baseplate:</t> It looks like you've drawn some attention to yourselves. You have multiple AAF contacts approaching your position fast.</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 12, 0.25, 0, 198] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
+					// Baseplate message
+					[
+						["Baseplate","Alright, very good, Sabre. It's time to get the hell out of there!",8.0,"RadioAmbient6"], AD_fnc_subtitle
+					] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
 					sleep 10.0;
 					
-					[["RadioAmbient2"],AD_fnc_soundAmp] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
-					["<t size='0.6'><t color='#D22E2E'>Baseplate:</t> Quickly, there's a dock with a boat not too far from your position. Once all of you are onboard, sail out into the sea.</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 12, 0.25, 0, 198] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
-					sleep 5.0;
+					[
+						["Baseplate","It looks like you've drawn some attention to yourselves. You have multiple AAF contacts approaching your position fast!",10.0,"RadioAmbient2"], AD_fnc_subtitle
+					] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
+					sleep 12.0;
+					
+					[
+						["Baseplate","There's a dock with a boat not too far from your position. Once all of you are onboard, sail out into the sea.",10.0,"RadioAmbient8"], AD_fnc_subtitle
+					] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
+					sleep 3.0;
 	
 					// Assign get in boat task
 					[sabre, [["boatTask", "primTasks"], "Board the <font color='#D22E2E'>AAF speedboat</font> located at the docks near the abandoned outpost. Make sure everyone is aboard before you set sail!", "Get in the Boat", "",escBoat, "assigned", "GETIN"]] call FHQ_fnc_ttAddTasks;
@@ -262,9 +278,10 @@ if (!isServer) exitWith {};
 		"Intel" remoteExec ["playMusic",[0,-2] select (isMultiplayer && isDedicated)];
 	};
 	
-	// Baseplate messege
-	[["RadioAmbient8"],AD_fnc_soundAmp] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
-	["<t size='0.6'><t color='#D22E2E'>Baseplate:</t> Okay Sabre, now sail to the coordinates we've sent you for extraction. The HMS Proteus is on standby to pick you up.</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 10, 0.25, 0, 198] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
+	// Baseplate message
+	[
+		["Baseplate","Okay Sabre, now sail to the coordinates we've sent you for extraction. The HMS Proteus is on standby to pick you up.",10.0,"RadioAmbient8"], AD_fnc_subtitle
+	] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
 
 	// Set Marker and LZ
 	_extMkr = createMarker ["extMkr", getPos subExt];
