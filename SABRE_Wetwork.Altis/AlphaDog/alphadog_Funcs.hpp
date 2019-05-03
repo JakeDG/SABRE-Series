@@ -27,6 +27,7 @@ class alphadog_Functions // Functions I wrote
 			class pickPut {};
 			class pickPutHold {};
 			class soundAmp {};
+			class subtitle {};
 			class terminalAction {};
 			class terminalActionHold {};
 			class thanks {};
