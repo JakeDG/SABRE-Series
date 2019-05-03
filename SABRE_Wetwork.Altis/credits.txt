@@ -22,6 +22,12 @@ Mission Version: 1.0
 	
 	V1.0 - Official Release
 	
+	V1.1
+		- Added dynamic simulation to improve mission performance
+		- Updated to the latest version of Psycho's Revive (v3072018)
+		- Adjusted loadscreen intro text to be more centered
+		- Updated old subtitles to use new subtitle function
+	
 *********************************************************************************************************************************
 
 Released:
