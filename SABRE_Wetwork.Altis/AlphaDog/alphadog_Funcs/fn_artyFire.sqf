@@ -12,8 +12,8 @@
     0: Object - An artillery vehicle
 	1: Object - A game logic object
 	
-   Example:
-   [arty, logic1] call AD_fnc_artyFire;
+	Example:
+	[arty, logic1, "marker"] call AD_fnc_artyFire;
 */
 
 if (!isServer) exitWith {};
@@ -50,16 +50,10 @@ if (_artyType == "B_MBT_01_mlrs_F" || _artyType == "I_Truck_02_MRL_F") then
 		while {alive _artillery} do
 		{
 			_shots = floor(random 8);
-			//for "_i" from 1 to _shots do
-			//{
-				//_logic action ["useWeapon", _artillery, gunner _artillery, 1]; // Force artillery to fire
 			_artillery commandArtilleryFire [_pos, "12Rnd_230mm_rockets", _shots];
-				//sleep 1.5;
-			//};
-			
 			_artillery setVehicleAmmo 1;
-			_rndTime = [15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75] call BIS_fnc_selectRandom;
-			sleep 12;
+			_rndTime = [20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75] call BIS_fnc_selectRandom;
+			sleep _rndTime;
 		};
 	};	
 }
