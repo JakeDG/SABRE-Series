@@ -271,6 +271,18 @@ richman_obj setDir (_richPos select 1);
 	_x setSkill ["general", 0.95];
 } forEach units sabre;
 
+// Randomize fuel levels for all cars except the starting offroad at the insertion
+[] spawn 
+{
+	_milVehs = ["I_MRAP_03_hmg_F","I_MRAP_03_gmg_F","I_APC_Wheeled_03_cannon_F"];
+	{
+		if (_x isKindOf "Car" && !(typeOf _x in _milVehs) && _x != startTruck) then 
+		{
+			_x setFuel (random [0.20, 0.50, 0.90]);
+		};
+	} forEach vehicles;
+};
+
 // Constant check if everyone is down
 [] spawn 
 {

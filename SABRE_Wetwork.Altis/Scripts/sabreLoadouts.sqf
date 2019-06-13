@@ -456,7 +456,7 @@ switch (_unitClass) do
 	};
 	
 	////////////////////////////////
-	//////// Foster Loadout //////// ---- Has UAV terminal by default for this mission
+	//////// Foster Loadout ////////
 	////////////////////////////////
 	case "B_engineer_F":
 	{	
@@ -474,14 +474,15 @@ switch (_unitClass) do
 				for "_i" from 1 to 3 do {_unit addItemToVest "FirstAidKit";};
 				for "_i" from 1 to 3 do {_unit addItemToVest "HandGrenade";};
 				for "_i" from 1 to 3 do {_unit addItemToVest "SmokeShell";};
-				for "_i" from 1 to 9 do {_unit addItemToVest "30Rnd_556x45_Stanag";};
+				for "_i" from 1 to 2 do {_unit addItemToVest "150Rnd_556x45_Drum_Mag_F";};
 				_unit addBackpack "B_TacticalPack_mcamo";
 				_unit addItemToBackpack "ToolKit";
 				for "_i" from 1 to 5 do {_unit addItemToBackpack "DemoCharge_Remote_Mag";};
+				for "_i" from 1 to 2 do {_unit addItemToBackpack "150Rnd_556x45_Drum_Mag_F";};
 				_unit addHeadgear "H_HelmetSpecB_snakeskin";
 
 				comment "Add weapons";
-				_unit addWeapon "arifle_SPAR_01_blk_F";
+				_unit addWeapon "arifle_SPAR_02_blk_F";
 				_unit addPrimaryWeaponItem "acc_pointer_IR";
 				_unit addPrimaryWeaponItem "optic_Arco_blk_F";
 				_unit addPrimaryWeaponItem "bipod_01_F_blk";
@@ -495,6 +496,8 @@ switch (_unitClass) do
 				_unit linkItem "ItemRadio";
 				_unit linkItem "ItemGPS";
 				_unit linkItem "NVGogglesB_blk_F";
+				
+				_unit addItemToVest "150Rnd_556x45_Drum_Mag_F";
 				
 				if (isStealth) then
 				{
@@ -512,14 +515,15 @@ switch (_unitClass) do
 				for "_i" from 1 to 3 do {_unit addItemToVest "FirstAidKit";};
 				for "_i" from 1 to 3 do {_unit addItemToVest "HandGrenade";};
 				for "_i" from 1 to 3 do {_unit addItemToVest "SmokeShell";};
-				for "_i" from 1 to 9 do {_unit addItemToVest "30Rnd_556x45_Stanag";};
+				for "_i" from 1 to 2 do {_unit addItemToVest "150Rnd_556x45_Drum_Mag_F";};
 				_unit addBackpack "B_TacticalPack_mcamo";
 				_unit addItemToBackpack "ToolKit";
 				for "_i" from 1 to 5 do {_unit addItemToBackpack "DemoCharge_Remote_Mag";};
+				for "_i" from 1 to 2 do {_unit addItemToBackpack "150Rnd_556x45_Drum_Mag_F";};
 				_unit addHeadgear "H_HelmetSpecB_snakeskin";
 
 				comment "Add weapons";
-				_unit addWeapon "arifle_SPAR_01_blk_F";
+				_unit addWeapon "arifle_SPAR_02_blk_F";
 				_unit addPrimaryWeaponItem "acc_pointer_IR";
 				_unit addPrimaryWeaponItem "optic_Arco_blk_F";
 				_unit addPrimaryWeaponItem "bipod_01_F_blk";
@@ -534,6 +538,8 @@ switch (_unitClass) do
 				_unit linkItem "ItemGPS";
 				_unit linkItem "NVGogglesB_blk_F";
 				
+				_unit addItemToVest "150Rnd_556x45_Drum_Mag_F";
+				
 				if (isStealth) then
 				{
 					_unit addPrimaryWeaponItem "muzzle_snds_M";
@@ -547,23 +553,25 @@ switch (_unitClass) do
 				for "_i" from 1 to 2 do {_unit addItemToUniform "FirstAidKit";};
 				for "_i" from 1 to 3 do {_unit addItemToUniform "16Rnd_9x21_Mag";};
 				_unit addVest "V_PlateCarrierGL_mtp";
-				_unit addItemToVest "FirstAidKit";
+				for "_i" from 1 to 3 do {_unit addItemToVest "FirstAidKit";};
 				for "_i" from 1 to 3 do {_unit addItemToVest "HandGrenade";};
 				for "_i" from 1 to 3 do {_unit addItemToVest "SmokeShell";};
-				for "_i" from 1 to 9 do {_unit addItemToVest "30Rnd_65x39_caseless_mag";};
+				for "_i" from 1 to 2 do {_unit addItemToVest "100Rnd_65x39_caseless_mag";};
 				_unit addBackpack "B_TacticalPack_mcamo";
 				_unit addItemToBackpack "ToolKit";
-				for "_i" from 1 to 2 do {_unit addItemToBackpack "FirstAidKit";};
 				for "_i" from 1 to 5 do {_unit addItemToBackpack "DemoCharge_Remote_Mag";};
+				for "_i" from 1 to 2 do {_unit addItemToBackpack "100Rnd_65x39_caseless_mag";};
 				_unit addHeadgear "H_HelmetSpecB_snakeskin";
 
 				comment "Add weapons";
-				_unit addWeapon "arifle_MX_Black_F";
+				_unit addWeapon "arifle_MX_SW_Black_F";
 				_unit addPrimaryWeaponItem "acc_pointer_IR";
 				_unit addPrimaryWeaponItem "optic_Arco_blk_F";
 				_unit addPrimaryWeaponItem "bipod_01_F_blk";
 				_unit addWeapon "hgun_P07_F";
 				_unit addWeapon "Rangefinder";
+				
+				_unit addItemToVest "100Rnd_65x39_caseless_mag";
 
 				comment "Add items";
 				_unit linkItem "ItemMap";

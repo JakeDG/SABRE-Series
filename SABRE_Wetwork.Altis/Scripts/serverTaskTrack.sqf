@@ -6,7 +6,7 @@ if (!isServer) exitWith {};
 	waitUntil {sleep 1.0; (!isNil "compoundDone")};
 	["compoundTask", "succeeded"] call FHQ_fnc_ttSetTaskState;
 	sleep 3.0;
-
+	
 	// Baseplate message
 	[
 		["Baseplate","Richman's not there? Dammit!",7.0,"RadioAmbient6"], AD_fnc_subtitle
@@ -18,10 +18,16 @@ if (!isServer) exitWith {};
 	] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
 	sleep 5.0;
 	
-	[compObj, "Hack Computer"] call AD_fnc_hack; // Add action to keyboard
+	[compObj, "Hack Computer", 10, "Hacking...", "Hack Complete", "Hack Interrupted"] call AD_fnc_hack; // Add action to keyboard
 	
 	// Assign hacking objective
 	[sabre, [["hackTask", "primTasks"], "Hack <font color='#D22E2E'>Richman's computer</font> to help Baseplate discover where he might be located.", "Hack Richman's Computer", "", getPosATL compObj, "assigned", "INTERACT"]] call FHQ_fnc_ttAddTasks;
+	sleep 3.0;
+	
+	// Save the game in singleplayer
+	waitUntil {isNil "AD_subtitle_running"};
+	if (!isMultiplayer && savingEnabled) then {saveGame;};
+	sleep 1.0;
 	
 	// Hack task ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	[] spawn
@@ -40,7 +46,7 @@ if (!isServer) exitWith {};
 		[
 			["Baseplate","Wait, what the Hell? It seems like Richman has been doing business with the AAF in the area.",10.0,"RadioAmbient8"], AD_fnc_subtitle
 		] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
-		sleep 12;
+		sleep 14;
 		
 		[
 			["Baseplate","Holy shit! According to some of these files, it seems that Richman and the AAF in this area have been working with CSAT spec ops for a few weeks now.",15.0,"RadioAmbient2"], AD_fnc_subtitle
@@ -73,6 +79,12 @@ if (!isServer) exitWith {};
 		[
 			["Baseplate","Get it done, Sabre. Baseplate, out.",7.0,"RadioAmbient6"], AD_fnc_subtitle
 		] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
+		sleep 3.0;
+		
+		// Save the game in singleplayer
+		waitUntil {isNil "AD_subtitle_running"};
+		if (!isMultiplayer && savingEnabled) then {saveGame;};
+		sleep 1.0;
 	
 		// Outpost task /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		[] spawn
@@ -85,9 +97,9 @@ if (!isServer) exitWith {};
 			
 			// Baseplate message
 			[
-				["Baseplate","Alright Sabre, we'll try to decipher this new intel, which will probably take a while.",7.0,"RadioAmbient2"], AD_fnc_subtitle
+				["Baseplate","Alright Sabre, we'll try to decipher this new intel, which will probably take a while.",10.0,"RadioAmbient2"], AD_fnc_subtitle
 			] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
-			sleep 9.0;
+			sleep 12.0;
 			
 			[
 				["Baseplate","However, we have good news! We went through some more of Richman's intel and we found some locations he could be at. We're sending them to you now.",10.0,"RadioAmbient8"], AD_fnc_subtitle
@@ -115,6 +127,12 @@ if (!isServer) exitWith {};
 			[
 				["Baseplate","Neutralize Richman and finish what you came here to do, gentlemen. Baseplate, out.",10.0,"RadioAmbient6"], AD_fnc_subtitle
 			] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
+			sleep 3.0;
+		
+			// Save the game in singleplayer
+			waitUntil {isNil "AD_subtitle_running"};
+			if (!isMultiplayer && savingEnabled) then {saveGame;};
+			sleep 1.0;
 			
 			// Kill Richman /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 			[] spawn
@@ -137,9 +155,9 @@ if (!isServer) exitWith {};
 				sleep 12.0;
 				
 				[
-					["Baseplate","According to the intel from that terminal you found earlier, CSAT has brought an experimental EMP onto Altian soil with the AAF's help!",15.0,"RadioAmbient2"], AD_fnc_subtitle
+					["Baseplate","According to the intel from that terminal you found earlier, CSAT has brought an experimental EMP onto Altian soil with the AAF's help!",13.0,"RadioAmbient2"], AD_fnc_subtitle
 				] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
-				sleep 17.0;
+				sleep 15.0;
 				
 				[
 					["Baseplate","That EMP must be destroyed at all costs! It's currently located at an abandoned outpost to the southeast of Feres! Get there quickly, gentlemen!",15.0,"RadioAmbient6"], AD_fnc_subtitle
@@ -147,6 +165,12 @@ if (!isServer) exitWith {};
 				sleep 3.0;
 				
 				[sabre, [["empTask", "primTasks"], "Destroy the <font color='#D22E2E'>CSAT EMP</font> located at the <marker name='abanOutMkr'>abandoned outpost</marker> to the southeast of Feres.", "Destroy EMP", "", getPosATL csatEMP, "assigned", "DESTROY"]] call FHQ_fnc_ttAddTasks;
+				sleep 3.0;
+		
+				// Save the game in singleplayer
+				waitUntil {isNil "AD_subtitle_running"};
+				if (!isMultiplayer && savingEnabled) then {saveGame;};
+				sleep 1.0;
 				
 				// Destroy EMP //////////////////////////////////////////////////////////////////////////////////////////////////////////
 				[] spawn
@@ -189,9 +213,14 @@ if (!isServer) exitWith {};
 					sleep 3.0;
 	
 					// Assign get in boat task
-					[sabre, [["boatTask", "primTasks"], "Board the <font color='#D22E2E'>AAF speedboat</font> located at the docks near the abandoned outpost. Make sure everyone is aboard before you set sail!", "Get in the Boat", "",escBoat, "assigned", "GETIN"]] call FHQ_fnc_ttAddTasks;
+					[sabre, [["boatTask", "primTasks"], "Board the <font color='#D22E2E'>AAF gunboat</font> located at the docks near the abandoned outpost. Make sure everyone is aboard before you set sail!", "Get in the Boat", "",escBoat, "assigned", "GETIN"]] call FHQ_fnc_ttAddTasks;
 					
 					[escBoat,false] remoteExec ["lock", [0,-2] select (isMultiplayer && isDedicated), escBoat]; // Unlock the boat
+					sleep 3.0;
+		
+					// Save the game in singleplayer
+					waitUntil {isNil "AD_subtitle_running"};
+					if (!isMultiplayer && savingEnabled) then {saveGame;};
 					sleep 1.0;
 					
 					// Board Boat //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -255,6 +284,7 @@ if (!isServer) exitWith {};
 	
 	["primTasks", "succeeded"] call FHQ_fnc_ttSetTaskState;
 	
+	// Stop ambient music
 	if (("Music" call BIS_fnc_getParamValue) == 1) then 
 	{
 		if (isDedicated) then
@@ -275,7 +305,13 @@ if (!isServer) exitWith {};
 		"" remoteExec ["playMusic",[0,-2] select (isMultiplayer && isDedicated)];
 		sleep 5.0;
 		[5,1] remoteExec ["fadeMusic", [0,-2] select (isMultiplayer && isDedicated)];
-		"Intel" remoteExec ["playMusic",[0,-2] select (isMultiplayer && isDedicated)];
+		
+		// Loop end song until at extraction
+		while {isNil "atExtract"} do 
+		{
+			"Intel" remoteExec ["playMusic",[0,-2] select (isMultiplayer && isDedicated)];
+			sleep 105; // Track length is 1:41 (101 secs)
+		};
 	};
 	
 	// Baseplate message

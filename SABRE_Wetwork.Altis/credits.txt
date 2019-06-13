@@ -26,8 +26,19 @@ Mission Version: 1.0
 		- Added dynamic simulation to improve mission performance
 		- Updated to the latest version of Psycho's Revive (v3072018)
 		- Adjusted loadscreen intro text to be more centered
-		- Updated old subtitles to use new subtitle function
-	
+		- Updated old subtitles to use a new subtitle function
+		- Added autosaves for singleplayer
+		- Adjusted timing between the displaying of some subtitles
+		- Increased AAF airbase security
+		- Randomized fuel levels for all vehicles except the starting truck and AAF patrol vehicles
+		- Adjusted SABRE teams loadouts slightly
+		- Looped ending song until players get to the extraction point
+		- Fixed a shelf that clipped through a door at Richman's compound
+		- Unlocked most vehicles
+		- Locked helicopters at the airbase
+		- Added info text when hacking Richman's Laptop
+		- Updated announcements page 
+		
 *********************************************************************************************************************************
 
 Released:
