@@ -24,8 +24,10 @@ if (!isServer) exitWith {};
 	// Initialize revive for sniper
 	[sniper] call AIS_System_fnc_loadAIS;
 	
-	_line1 = ["Crow", "Thanks for saving me, guys. Now lets get the fuck outta' here!"];
-	[[[_line1],"CUSTOM"], TP_fnc_simpleConv] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
+	// Crow message
+	[
+		["Crow", "Thanks for saving me, guys. Now lets get the fuck outta' here!", 10.0], AD_fnc_subtitle
+	] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
 	sleep 6.0;
 	
 	//"LeadTrack01_F" remoteExec ["playMusic",[0,-2] select (isMultiplayer && isDedicated)];
@@ -82,8 +84,10 @@ if (!isServer) exitWith {};
 	["saveTask", "failed"] call FHQ_fnc_ttSetTaskState; 
 	sleep 3.0;
 	
-	_line1 = ["Baseplate", "Goddammit, Sabre! The sniper's dead. Pull out of there. Mission failed!"];
-	[[[_line1],"CUSTOM"], TP_fnc_simpleConv] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
+	// Baseplate message
+	[
+		["Baseplate", "Goddammit, Sabre! The sniper's dead. Pull out of there. Mission failed!",10.0,"RadioAmbient6"], AD_fnc_subtitle
+	] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
 	sleep 3.0;
 	
 	["End_SnprDead",false] remoteExec ["BIS_fnc_endMission"];
@@ -123,9 +127,16 @@ if (!isServer) exitWith {};
 		deleteMarker "bravoLeadMkr";
 	};
 	
-	_line1 = ["Bravo Lead", "Hey Sabre, thanks for the assist. Those guys showed up out of nowhere."];
-	_line2 = ["Bravo Lead", "Tell you what, since you helped us, we'll help you assault Oreokastro. Just let us get in position, then give us the word when you want us to attack."];
-	[[[_line1,_line2],"CUSTOM"], TP_fnc_simpleConv] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
+	// Bravo lead message
+	[
+		["Bravo Lead","Hey Sabre, thanks for the assist. Those guys showed up out of nowhere.",10.0,"RadioAmbient2"], AD_fnc_subtitle
+	] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
+	
+	// Bravo lead message
+	[
+		["Bravo Lead","Tell you what, since you helped us, we'll help you assault Oreokastro. Just let us get in position, then give us the word when you want us to attack.",10.0,"RadioAmbient8"], AD_fnc_subtitle
+	] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
+
 };
 
 // Cache task
@@ -178,8 +189,10 @@ if (!isServer) exitWith {};
 {
 	waitUntil {sleep 1.0; !isNil "bravoWait"};
 	
-	_line1 = ["Bravo Lead", "Sabre, we are in position and awaiting your orders to move-in on the village. Bravo out."];
-	[[[_line1],"CUSTOM"], TP_fnc_simpleConv] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
+	// Bravo lead message
+	[
+		["Bravo Lead","Sabre, we are in position and awaiting your orders to move-in on the village. Bravo out.",10.0,"RadioAmbient2"], AD_fnc_subtitle
+	] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
 
 	// Add support item (fixed to work on dedi servers)
 	[[(leader sabre), "BravoAttack"], BIS_fnc_addCommMenuItem] remoteExec ["call", (leader sabre)];
@@ -190,8 +203,10 @@ if (!isServer) exitWith {};
 {
 	waitUntil {sleep 1.0; !isNil "bravoGo"};
 	
-	_line1 = ["Bravo Lead", "Copy that, Sabre. Bravo is rolling. We're gonna move up the main road and hit 'em with the 50. They won't see this coming. Bravo out."];
-	[[[_line1],"CUSTOM"], TP_fnc_simpleConv] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
+	// Bravo lead message
+	[
+		["Bravo Lead","Copy that, Sabre. Bravo is rolling. We're gonna move up the main road and hit 'em with the 50. They won't see this coming. Bravo out.",10.0,"RadioAmbient6"], AD_fnc_subtitle
+	] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
 };
 
 // Bravo dead warning
@@ -210,8 +225,10 @@ if (!isServer) exitWith {};
 		deleteMarker "bravoLeadMkr";
 	};
 	
-	_line1 = ["Baseplate", "Sabre, Bravo Team has been wiped out. Stay alert out there men. Baseplate, out."];
-	[[[_line1],"CUSTOM"], TP_fnc_simpleConv] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
+	// Baseplate message
+	[
+		["Baseplate","Sabre, Bravo Team has been wiped out. Stay alert out there men. Baseplate, out.",10.0,"RadioAmbient6"], AD_fnc_subtitle
+	] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
 };
 
 /******************************** Misc **************************************/
@@ -234,14 +251,18 @@ if (!isNil "civHostage") then
 {
 	waitUntil {sleep 1.0; isTouchingGround insHeli};
 	
-	_line1 = ["Blazerunner", "Alright guys, this is your stop!"];
-	[[[_line1],"CUSTOM",0.15], TP_fnc_simpleConv] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
+	// Blazerunner message
+	[
+		["Blazerunner","Alright guys, this is your stop!",8.0,"RadioAmbient8"], AD_fnc_subtitle
+	] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
 	
 	waitUntil {sleep 1.0; {!(_x in insHeli)} count units sabre == {alive _x} count units sabre};
 	sleep 1.0;
 	
-	_line1 = ["Blazerunner", "Kick some ass out there, Sabre! We are RTB, out."];
-	[[[_line1],"CUSTOM",0.15], TP_fnc_simpleConv] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
+	// Blazerunner message
+	[
+		["Blazerunner","Kick some ass out there, Sabre! We are RTB, out.",10.0,"RadioAmbient6"], AD_fnc_subtitle
+	] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
 	
 	sleep 1.0;
 	[insHeli, "CLOSE"] call AD_fnc_animHeliDoors;

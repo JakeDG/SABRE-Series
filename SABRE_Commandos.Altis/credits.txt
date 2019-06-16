@@ -185,6 +185,11 @@ Mission Version: 1.1
 		- Adjusted the loadouts of Sabre team
 		- Adjusted loadscreen text to be more centered
 		- Changed how subtitles are handled by using Simple Conversation Script by Revo
+	
+	v2.45
+		- Adjusted loadscreen text to be more centered (using different method than v2.4's)
+		- Removed Revo's subtitle function and added my own, which will now handle subtitles
+		- Adjusted subtitle timings a bit
 		
 *********************************************************************************************************************************
 
