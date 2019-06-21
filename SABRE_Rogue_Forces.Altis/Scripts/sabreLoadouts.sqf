@@ -58,7 +58,7 @@ switch (_unitClass) do
 				for "_i" from 1 to 3 do {_unit addItemToUniform "11Rnd_45ACP_Mag";};
 				_unit addVest "V_PlateCarrierSpec_mtp";
 				for "_i" from 1 to 2 do {_unit addItemToVest "FirstAidKit";};
-				for "_i" from 1 to 9 do {_unit addItemToVest "30Rnd_65x39_caseless_mag";};
+				for "_i" from 1 to 10 do {_unit addItemToVest "30Rnd_65x39_caseless_black_mag";};
 				_unit addBackpack "B_Kitbag_mcamo";
 				_unit addItemToBackpack "FirstAidKit";
 				for "_i" from 1 to 5 do {_unit addItemToBackpack "HandGrenade";};
@@ -98,7 +98,7 @@ switch (_unitClass) do
 				for "_i" from 1 to 3 do {_unit addItemToUniform "11Rnd_45ACP_Mag";};
 				_unit addVest "V_PlateCarrierSpec_mtp";
 				for "_i" from 1 to 2 do {_unit addItemToVest "FirstAidKit";};
-				for "_i" from 1 to 9 do {_unit addItemToVest "30Rnd_65x39_caseless_mag";};
+				for "_i" from 1 to 10 do {_unit addItemToVest "30Rnd_65x39_caseless_black_mag";};
 				_unit addBackpack "B_Kitbag_mcamo";
 				_unit addItemToBackpack "FirstAidKit";
 				for "_i" from 1 to 5 do {_unit addItemToBackpack "HandGrenade";};
@@ -138,7 +138,7 @@ switch (_unitClass) do
 				for "_i" from 1 to 3 do {_unit addItemToUniform "11Rnd_45ACP_Mag";};
 				_unit addVest "V_PlateCarrierSpec_mtp";
 				for "_i" from 1 to 2 do {_unit addItemToVest "FirstAidKit";};
-				for "_i" from 1 to 9 do {_unit addItemToVest "30Rnd_65x39_caseless_mag";};
+				for "_i" from 1 to 10 do {_unit addItemToVest "30Rnd_65x39_caseless_black_mag";};
 				_unit addBackpack "B_Kitbag_mcamo";
 				_unit addItemToBackpack "FirstAidKit";
 				for "_i" from 1 to 5 do {_unit addItemToBackpack "HandGrenade";};

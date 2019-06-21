@@ -7,6 +7,11 @@ if (!isServer) exitWith {};
 	waitUntil {sleep 1.0; (!isNil "msrCrossed")};
 	
 	["msrTask", "succeeded", "artyTask_1"] call FHQ_fnc_ttSetTaskStateAndNext;
+	sleep 10.0;
+	
+	// Save the game in singleplayer
+	if (!isMultiplayer && savingEnabled) then {saveGame;};
+	sleep 1.0;
 };
 
 /************************ ARTY TASKS ********************************/
@@ -17,6 +22,11 @@ if (!isServer) exitWith {};
 	
 	["artyTask_1", "succeeded", "commTask"] call FHQ_fnc_ttSetTaskStateAndNext;
 	["artyMkr_1", "ColorRed", "X_arty_1"] call AD_fnc_crossMkr;
+	sleep 10.0;
+	
+	// Save the game in singleplayer
+	if (!isMultiplayer && savingEnabled) then {saveGame;};
+	sleep 1.0;
 };
 
 // Artillery Firebase Task
@@ -26,6 +36,11 @@ if (!isServer) exitWith {};
 	
 	["artyTask_2", "succeeded", "artyTask_3"] call FHQ_fnc_ttSetTaskStateAndNext;
 	["artyBaseMkr", "ColorRed", "X_artyBase"] call AD_fnc_crossMkr;
+	sleep 10.0;
+	
+	// Save the game in singleplayer
+	if (!isMultiplayer && savingEnabled) then {saveGame;};
+	sleep 1.0;
 };
 
 // Artillery #2 Task
@@ -35,6 +50,11 @@ if (!isServer) exitWith {};
 	
 	["artyTask_3", "succeeded", "aaTask_1", "aaTask_2", "baseTask"] call FHQ_fnc_ttSetTaskStateAndNext;
 	["artyMkr_2", "ColorRed", "X_arty_2"] call AD_fnc_crossMkr;
+	sleep 10.0;
+	
+	// Save the game in singleplayer
+	if (!isMultiplayer && savingEnabled) then {saveGame;};
+	sleep 1.0;
 };
 
 // All arty tasks completed
@@ -54,6 +74,11 @@ if (!isServer) exitWith {};
 	
 	["aaTask_1", "succeeded", "artyTask_3", "aaTask_2", "baseTask"] call FHQ_fnc_ttSetTaskStateAndNext;
 	["aaMkr_1", "ColorRed", "X_aa_1"] call AD_fnc_crossMkr;
+	sleep 10.0;
+	
+	// Save the game in singleplayer
+	if (!isMultiplayer && savingEnabled) then {saveGame;};
+	sleep 1.0;
 };
 
 // Anti-Air #2 Task
@@ -62,6 +87,11 @@ if (!isServer) exitWith {};
 	waitUntil {sleep 1.0; (!alive aa_2)};
 	
 	["aaTask_2", "succeeded", "baseTask"] call FHQ_fnc_ttSetTaskStateAndNext;
+	sleep 10.0;
+	
+	// Save the game in singleplayer
+	if (!isMultiplayer && savingEnabled) then {saveGame;};
+	sleep 1.0;
 };
 
 // All AA tasks completed
@@ -81,6 +111,11 @@ if (!isServer) exitWith {};
 	
 	["commTask", "succeeded", "artyTask_2"] call FHQ_fnc_ttSetTaskStateAndNext;
 	["commMkr", "ColorRed", "X_comm"] call AD_fnc_crossMkr;
+	sleep 10.0;
+	
+	// Save the game in singleplayer
+	if (!isMultiplayer && savingEnabled) then {saveGame;};
+	sleep 1.0;
 };
 
 // Faronaki Base Task
@@ -90,6 +125,11 @@ if (!isServer) exitWith {};
 	
 	["baseTask", "succeeded", "aaTask_2"] call FHQ_fnc_ttSetTaskStateAndNext;
 	["baseMkr", "ColorRed", "X_base"] call AD_fnc_crossMkr;
+	sleep 10.0;
+	
+	// Save the game in singleplayer
+	if (!isMultiplayer && savingEnabled) then {saveGame;};
+	sleep 1.0;
 };
 
 /***************** Secondary Objectives **********************/
@@ -126,13 +166,19 @@ if (!isServer) exitWith {};
 		_captivesAlive = {alive _x} count [loyal1,loyal2,loyal3]; // Count number of loyalists
 		if (_captivesAlive > 1) then // More than one survivor
 		{
-			["<t size='0.6'><t color='#D22E2E'>Loyalist:</t> Thanks for saving us from these traitors! We'll join up with you guys.</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 10, 0.25, 0, 198] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
+			// Survivors speak
+			[
+				["Loyalist","Thanks for saving us from these traitors! We'll join up with you guys.",10.0], AD_fnc_subtitle
+			] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
 		}
 		else
 		{
 			if (_captivesAlive == 1) then // Only one survivor
 			{
-				["<t size='0.6'><t color='#D22E2E'>Loyalist:</t> Thanks for saving me! I guess I'll follow you guys.</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 10, 0.25, 0, 198] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
+				// Survivor speaks
+				[
+					["Loyalist","Thanks for saving me! I guess I'll follow you guys.",10.0], AD_fnc_subtitle
+				] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
 			};
 		};	
 	}
@@ -206,19 +252,21 @@ if (!isServer) exitWith {};
 	execVM "Scripts\baseAttack.sqf";
 	
 	// Baseplate message
-	[["RadioAmbient2"],AD_fnc_soundAmp] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
-	["<t size='0.6'><t color='#D22E2E'>Baseplate:</t> Job well done, Sabre! We are dispatching Blazerunner to your location.</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 10, 0.25, 0, 198] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
+	[
+		["Baseplate","Job well done, Sabre! We are dispatching Blazerunner to your location.",8.0,"RadioAmbient2"], AD_fnc_subtitle
+	] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
 	sleep 11.0;
 	
-	[["RadioAmbient8"],AD_fnc_soundAmp] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
-	["<t size='0.6'><t color='#D22E2E'>Baseplate:</t> Be advised, it looks like General Zane is sending a welcoming party to your location from Pyrgos. Hold your ground until extraction arrives!</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 10, 0.25, 0, 199] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
+	[
+		["Baseplate","Be advised, it looks like General Zane is sending a welcoming party to your location from Pyrgos. Hold your ground until extraction arrives!",10.0,"RadioAmbient8"], AD_fnc_subtitle
+	] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
 	sleep 12.0;
 
 	// Blazerunner messege
-	[["RadioAmbient6"],AD_fnc_soundAmp] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
-	["<t size='0.6'><t color='#D22E2E'>Blazerunner:</t> Sabre, this is Blazerunner. I'm inbound. ETA 5 mikes. Blazerunner Out.</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 10, 0.25, 0, 198] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
-
-	sleep 10.0;
+	[
+		["Blazerunner","Sabre, this is Blazerunner. We're inbound. ETA 5 mikes. Be advised, we've got a pair of Blackfoots escorting us to the evac. They'll provide cover once we get there. Blazerunner Out.",12.0,"RadioAmbient6"], AD_fnc_subtitle
+	] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
+	sleep 14.0;
 	
 	// Delete the music event handler
 	if (("Music" call BIS_fnc_getParamValue) == 1) then 
@@ -241,6 +289,7 @@ if (!isServer) exitWith {};
 		"" remoteExec ["playMusic",[0,-2] select (isMultiplayer && isDedicated)];
 		sleep 1.0;
 		[5,1] remoteExec ["fadeMusic", [0,-2] select (isMultiplayer && isDedicated)];
+		
 		"Static" remoteExec ["playMusic",[0,-2] select (isMultiplayer && isDedicated)];
 	};
 	
@@ -257,7 +306,7 @@ if (!isServer) exitWith {};
 		]
 	] call FHQ_fnc_ttAddTasks;
 	
-	sleep 45.0;
+	sleep 60.0;
 	
 	// Activate extraction
 	execVM "Scripts\extract.sqf";

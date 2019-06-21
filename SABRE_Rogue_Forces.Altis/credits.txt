@@ -27,6 +27,19 @@ Mission Version:
 		- Removed the need for the paramWeather.hpp file. Weather parameter is now handled through the use of the setOvercast function.
 		- Fixed the ambient music not playing if the mission is loaded from a save.
 	
+	V1.2
+		- Updated to the latest version of Psycho's Revive (v3072018)
+		- Added autosaves for singleplayer
+		- Adjusted some of Blazerunner's dialog
+		- Subtitles are now displayed using a new subtitle function
+		- Extended the time it takes for extraction to arrive by 15 seconds
+		- Adjusted loadscreen intro text to be more centered
+		- Moved a shelf that was clipping through a door a the Faronaki outpost
+		- The ammo caches at the first anti-air location are now able to be interacted with 
+		- Added another virtual arsenal crate near the run down building at the firebase
+		- Fixed a classname issue in the flyBys.sqf script
+		- Adjusted Sabre team's loadouts a bit
+		
 	
 *********************************************************************************************************************************
 

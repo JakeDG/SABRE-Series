@@ -16,7 +16,7 @@ execVM "Scripts\serverTaskTrack.sqf";
 
 	[_x, [ "<t color='#D22E2E'>Open Virtual Arsenal</t>",{ ["Open",true] spawn BIS_fnc_arsenal; },[],10,true,true,"","(_target distance _this) < 3.5"] ] remoteExec [ "addAction", [0,-2] select (isMultiplayer && isDedicated), (alive _x)];
 	
-}forEach [arsenal_1, arsenal_2, arsenal_pwr];
+}forEach [arsenal_1, arsenal_2, arsenal_pwr, arsenal_fire];
 
 // Add action to meltdown laptop
 [ meltLaptop, [ "<t color='#D22E2E'>Begin Meltdown</t>","Scripts\powerHack.sqf",[],10,true,true,"","(_target distance _this) < 2.5"] ] remoteExec [ "addAction", [0,-2] select (isMultiplayer && isDedicated), true ];
@@ -178,7 +178,7 @@ if (_paramMusic == 1) then
 		];
 
 	publicVariable "trackList";
-		
+
 	if (!isDedicated) then // All music is synced over the network through player host
 	{
 		ehID = addMusicEventHandler [

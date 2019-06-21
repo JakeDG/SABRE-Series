@@ -96,8 +96,8 @@ else
 	player allowDamage true; // Turn off player's invincibility
 };
 
-// If mission is singleplayer, then restart the music event handler every time the mission is loaded from a save
-if (!isMultiplayer) then 
+// If mission is singleplayer, then restart the music event handler every time the mission is loaded from a save where the main tasks have not been completed yet
+if (!isMultiplayer && !(["primTasks"] call FHQ_fnc_ttAreTasksCompleted)) then 
 {
 	waitUntil {sleep 1.0; !isNil "trackList"};
 	addMissionEventHandler ["Loaded", 

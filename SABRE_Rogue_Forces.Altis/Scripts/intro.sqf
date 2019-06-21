@@ -30,14 +30,20 @@ sleep 1.0;
 	
 sleep 5.0;
 playMusic "Contract";
-["<t  size = '1.0'>Six days after the coup...</t>", safeZoneX+0, safeZoneY+safeZoneH-0.9, 4, 4, 0, 200] spawn BIS_fnc_dynamicText;
-sleep 10.0;
 
-["<t size='1.0' color='#D22E2E'>AlphaDog Presents...</t>", safeZoneX+0.1, safeZoneY+safeZoneH-0.9, 4, 4, 0, 200] spawn BIS_fnc_dynamicText;
-sleep 10.0;
+101 cutText ["<t size='2.0'>Six days after the coup...", "BLACK", 3.0,true,true];
+sleep 7.0;
+101 cutFadeOut 1.0;
+sleep 4.0;
 
-["<t  size = '3.0' shadow = '0'color='#D22E2E'>SABRE:</t><t  size = '3.0'> Rogue Forces</t>", safeZoneX+0.45,safeZoneY+safeZoneH-0.9, 8, 7, 0, 200] spawn BIS_fnc_dynamicText;
+101 cutText ["<t size='2.0' color='#D22E2E'>AlphaDog presents...", "BLACK", 3.0,true,true];
+sleep 7.0;
+101 cutFadeOut 1.0;
+sleep 4.0;
+
+101 cutText ["<t  size = '5.0' shadow = '0' color='#D22E2E'>SABRE:<br/></t><t  size = '5.0' shadow = '0'>Rogue Forces</t>", "BLACK", 4.0,true,true];
 sleep 5.0;
+101 cutFadeOut 4.5;
 
 100 cutText ["", "BLACK IN", 15];
 player enableSimulation true;
@@ -47,7 +53,7 @@ enableRadio true;
 enableEnvironment true;
 enableSentences true;
 
-sleep 12.0;
+sleep 15.0;
 _date = [] call AD_fnc_getDate;
 _time = [] call AD_fnc_getTime;
 _text = 
@@ -72,25 +78,8 @@ if (("Music" call BIS_fnc_getParamValue) == 1) then
 									{
 										[] spawn
 										{
-											_tracks = [
-														"Fallout",
-														"AmbientTrack01a_F",
-														"LeadTrack02_F",
-														"AmbientTrack03_F",
-														"SkyNet",
-														"Wasteland",
-														"AmbientTrack01_F_Orange",
-														"AmbientTrack01a_F_Tacops",
-														"AmbientTrack01b_F_Tacops",
-														"AmbientTrack02a_F_Tacops",
-														"AmbientTrack02b_F_Tacops",
-														"AmbientTrack03a_F_Tacops",
-														"AmbientTrack03b_F_Tacops",
-														"AmbientTrack04a_F_Tacops",
-														"AmbientTrack04b_F_Tacops"
-													];
 											sleep 5.0;
-											playMusic (selectRandom _tracks);;
+											playMusic (selectRandom trackList);;
 										};
 									}
 								];

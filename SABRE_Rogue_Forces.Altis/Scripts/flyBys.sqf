@@ -1,7 +1,9 @@
 // Creates ambient flybys of AAF Vehicles near Sabre Team's squad leader
+if (!isServer) exitWith {};
+
 _unit = _this select 0; // Group leader
 _itrNum = _this select 1; // # of flybys
-_flyUnits = ["I_Heli_light_03_F", "I_Heli_Transport_02_F", "I_Plane_Fighter_03_dynamicLoadout_F", "I_Plane_Fighter_04_F"]; // AAF flying units
+_flyUnits = ["I_Heli_light_03_F", "I_Heli_Transport_02_F", "I_Plane_Fighter_03_CAS_F", "I_Plane_Fighter_04_F"]; // AAF flying units
 
 for "_i" from 1 to _itrNum do
 {
