@@ -609,7 +609,7 @@ switch (_unitClass) do
 				{
 					_unit addPrimaryWeaponItem "200Rnd_556x45_Box_Tracer_Red_F";
 					for "_i" from 1 to 2 do {_unit addItemToVest "200Rnd_556x45_Box_Tracer_Red_F";};
-				}
+				};
 				
 				_unit addHeadgear "H_HelmetSpecB_snakeskin";
 
@@ -662,7 +662,7 @@ switch (_unitClass) do
 				{
 					_unit addPrimaryWeaponItem "200Rnd_556x45_Box_Tracer_Red_F";
 					for "_i" from 1 to 2 do {_unit addItemToVest "200Rnd_556x45_Box_Tracer_Red_F";};
-				}
+				};
 				
 				_unit addHeadgear "H_HelmetSpecB_snakeskin";
 
@@ -717,7 +717,7 @@ switch (_unitClass) do
 				{
 					_unit addPrimaryWeaponItem "100Rnd_65x39_caseless_black_mag_tracer";
 					for "_i" from 1 to 4 do {_unit addItemToVest "100Rnd_65x39_caseless_black_mag_tracer";};
-				}
+				};
 				
 				_unit addHeadgear "H_HelmetSpecB_snakeskin";
 
