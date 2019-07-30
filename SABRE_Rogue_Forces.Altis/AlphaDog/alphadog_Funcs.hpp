@@ -36,7 +36,7 @@ class alphadog_Functions // Functions I wrote
 
 class thirdParty_Functions	// Functions not written by me, but that I modified!!!
 	{
-		tag = "BIS"
+		tag = "TP";
 		
 		class thirdParty 
 		{

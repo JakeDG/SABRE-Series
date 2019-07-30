@@ -15,7 +15,7 @@
     5: (Optional) String - Text displayed when action is interrupted.
    
    Example:
-   [object, "Some Custom Name", 12, "downloading", "finished", "interrupted"] call AD_fnc_hack;
+   [object, "Some Custom Name", "downloading", "finished", "interrupted", 12] call AD_fnc_hack;
 */
 
 if (!isServer) exitwith {};

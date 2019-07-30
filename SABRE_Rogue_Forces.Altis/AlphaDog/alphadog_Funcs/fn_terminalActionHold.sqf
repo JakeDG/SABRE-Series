@@ -34,6 +34,9 @@ if (_actionText == "") exitwith {["ERROR: Action text is empty!"] call BIS_fnc_e
 // Set custom name in text
 _actionText = format ["<t color='#D22E2E'>%1</t>", _actionText];
 
+// Track object value
+_terminal setVariable ["isTermComp", false, true];
+
 // Create hack hold action for every connected client
 [
 	_terminal,                                                                           // Object the action is attached to

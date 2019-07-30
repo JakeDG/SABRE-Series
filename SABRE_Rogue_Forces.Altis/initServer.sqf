@@ -228,6 +228,17 @@ else
 	_x setSkill ["general", 0.95];
 } forEach units sabre;
 
+// Randomize fuel levels for all cars except the starting truck at the insertion
+[] spawn 
+{
+	{
+		if (_x isKindOf "LandVehicle" && _x != startTruck) then 
+		{
+			_x setFuel (random [0.20, 0.50, 0.90]);
+		};
+	} forEach vehicles;
+};
+
 // Move officer
 _officerPos = selectRandom [[17060.7,11306.1,1.12971],[16861.3,10245.2,0.841483],[15765.8,10649.9,0.670425]];
 r_officer setPosATL _officerPos;

@@ -30,8 +30,10 @@ Mission Version:
 	V1.2
 		- Updated to the latest version of Psycho's Revive (v3072018)
 		- Added autosaves for singleplayer
+		- Fixed "Bug Enemy Comms" objective auto-completing on mission start after the Contact DLC update
 		- Adjusted some of Blazerunner's dialog
 		- Subtitles are now displayed using a new subtitle function
+		- Blazerunner is now escorted by two Blackfoot NATO gunships upon arriving at extraction
 		- Extended the time it takes for extraction to arrive by 15 seconds
 		- Adjusted loadscreen intro text to be more centered
 		- Moved a shelf that was clipping through a door a the Faronaki outpost
@@ -39,8 +41,11 @@ Mission Version:
 		- Added another virtual arsenal crate near the run down building at the firebase
 		- Fixed a classname issue in the flyBys.sqf script
 		- Adjusted Sabre team's loadouts a bit
+		- Added a damaged NATO MRAP on the road in front of the radio tower
+		- Misc changes to aesthetics
+		- Unlocked most vehicles
+		- Randomized fuel levels of most vehicles
 		
-	
 *********************************************************************************************************************************
 
 Copyright Disclaimer:
