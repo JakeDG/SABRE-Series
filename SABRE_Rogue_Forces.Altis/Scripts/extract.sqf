@@ -2,8 +2,6 @@
 if (!isServer) exitWith {};
 
 // Create Blackfoot escorts for Blazerunner
-
-hint "SPAWNING";
 _escorts = createGroup west;
 sleep 1.0;
 _es1 = [getMarkerPos "heliSpawnMkr_1", 200, "B_Heli_Attack_01_F", _escorts] call bis_fnc_spawnvehicle; // Group lead
@@ -25,7 +23,6 @@ _eWp3 setWaypointType "SAD";
 
 /* _eWp4 = _escorts addWaypoint [(getMarkerPos "baseMkr"), 3];
 _eWp4 setWaypointType "SAD"; */
-
 
 sleep 5.0;
 

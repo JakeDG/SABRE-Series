@@ -575,11 +575,11 @@ switch (_unitClass) do
 		switch (_dlcType) do 
 		{
 			case "bothOwned":
-			{
+			{	
 				comment "Add weapons";
-				_unit addWeapon "LMG_03_F";
+				_unit addWeapon "arifle_SPAR_02_blk_F";
 				_unit addPrimaryWeaponItem "acc_pointer_IR";
-				_unit addPrimaryWeaponItem "optic_Hamr";
+				_unit addPrimaryWeaponItem "optic_ERCO_blk_F";
 				_unit addWeapon "hgun_P07_F";
 				_unit addHandgunItem "16Rnd_9x21_Mag";
 
@@ -602,13 +602,13 @@ switch (_unitClass) do
 				
 				if (isStealth) then	// If the mission is stealth,then add only use non-tracer rounds
 				{
-					_unit addPrimaryWeaponItem "200Rnd_556x45_Box_Red_F";
-					for "_i" from 1 to 2 do {_unit addItemToVest "200Rnd_556x45_Box_Red_F";};
+					_unit addPrimaryWeaponItem "150Rnd_556x45_Drum_Mag_F";
+					for "_i" from 1 to 4 do {_unit addItemToVest "150Rnd_556x45_Drum_Mag_F";};
 				}
 				else
 				{
-					_unit addPrimaryWeaponItem "200Rnd_556x45_Box_Tracer_Red_F";
-					for "_i" from 1 to 2 do {_unit addItemToVest "200Rnd_556x45_Box_Tracer_Red_F";};
+					_unit addPrimaryWeaponItem "150Rnd_556x45_Drum_Mag_Tracer_F";
+					for "_i" from 1 to 4 do {_unit addItemToVest "150Rnd_556x45_Drum_Mag_Tracer_F";};
 				};
 				
 				_unit addHeadgear "H_HelmetSpecB_snakeskin";
@@ -630,9 +630,9 @@ switch (_unitClass) do
 			case "apex":
 			{
 				comment "Add weapons";
-				_unit addWeapon "LMG_03_F";
+				_unit addWeapon "arifle_SPAR_02_blk_F";
 				_unit addPrimaryWeaponItem "acc_pointer_IR";
-				_unit addPrimaryWeaponItem "optic_Hamr";
+				_unit addPrimaryWeaponItem "optic_ERCO_blk_F";
 				_unit addWeapon "hgun_P07_F";
 				_unit addHandgunItem "16Rnd_9x21_Mag";
 
@@ -647,7 +647,7 @@ switch (_unitClass) do
 				comment "Add items to containers";
 				for "_i" from 1 to 2 do {_unit addItemToUniform "FirstAidKit";};
 				for "_i" from 1 to 3 do {_unit addItemToUniform "16Rnd_9x21_Mag";};
-				for "_i" from 1 to 2 do {_unit addItemToVest "HandGrenade";};
+				for "_i" from 1 to 2 do {_unit addItemToVest "MiniGrenade";};
 				for "_i" from 1 to 2 do {_unit addItemToVest "SmokeShell";};
 				_unit addItemToBackpack "ToolKit";
 				for "_i" from 1 to 3 do {_unit addItemToBackpack "FirstAidKit";};
@@ -655,13 +655,13 @@ switch (_unitClass) do
 				
 				if (isStealth) then	// If the mission is stealth,then add only use non-tracer rounds
 				{
-					_unit addPrimaryWeaponItem "200Rnd_556x45_Box_Red_F";
-					for "_i" from 1 to 2 do {_unit addItemToVest "200Rnd_556x45_Box_Red_F";};
+					_unit addPrimaryWeaponItem "150Rnd_556x45_Drum_Mag_F";
+					for "_i" from 1 to 4 do {_unit addItemToVest "150Rnd_556x45_Drum_Mag_F";};
 				}
 				else
 				{
-					_unit addPrimaryWeaponItem "200Rnd_556x45_Box_Tracer_Red_F";
-					for "_i" from 1 to 2 do {_unit addItemToVest "200Rnd_556x45_Box_Tracer_Red_F";};
+					_unit addPrimaryWeaponItem "150Rnd_556x45_Drum_Mag_Tracer_F";
+					for "_i" from 1 to 4 do {_unit addItemToVest "150Rnd_556x45_Drum_Mag_Tracer_F";};
 				};
 				
 				_unit addHeadgear "H_HelmetSpecB_snakeskin";

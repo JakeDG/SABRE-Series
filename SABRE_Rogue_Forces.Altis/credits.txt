@@ -30,6 +30,7 @@ Mission Version:
 	V1.2
 		- Updated to the latest version of Psycho's Revive (v3072018)
 		- Added autosaves for singleplayer
+		- Added a mobile arsenal drone at start point
 		- Fixed "Bug Enemy Comms" objective auto-completing on mission start after the Contact DLC update
 		- Adjusted some of Blazerunner's dialog
 		- Subtitles are now displayed using a new subtitle function

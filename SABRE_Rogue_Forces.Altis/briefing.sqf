@@ -50,9 +50,11 @@
 	
 	["Mission", "Your team has been covertly inserted behind rogue AAF lines via the <marker name='subMkr'>HMS Proteus</marker> submarine. You are tasked with <font color='#D22E2E'>disrupting</font> rogue AAF operations south of Pyrgos. This includes <font color='#D22E2E'>neutralizing</font> all their <font color='#D22E2E'>long-range artillery assets</font>, <font color='#D22E2E'>bugging their communications</font>, <font color='#D22E2E'>destroying the triple-A</font> that is guarding Pyrgos's airspace, and <font color='#D22E2E'>clearing out</font> the <marker name='baseMkr'>Faronaki Coast Resort</marker> that they have turned into an outpost. Also, you have been given <font color='#D22E2E'>some secondary objectives</font> that will benefit both your team and our offensive."],  
 	
-	["Supports", "<font color='#D22E2E'>No support could be granted at this time</font>!"],
+	["Supports", "We have requisitioned an <font color='#D22E2E'>UGV Stomper</font> for you. It is capable of <font color='#D22E2E'>delivering supplies</font> when you need them. <br/><br/>Due to the circumstances regarding the ongoing offensive, <font color='#D22E2E'>no other support could be granted at this time!</font>"],
 	
 	["Signal", "<font color='#D22E2E'>Sabre</font> - Your team<br/><br/><font color='#D22E2E'>Blazerunner</font> - Sabre Team's helicopter<br/><br/><font color='#D22E2E'>Baseplate</font> - HQ"],
+	
+	["UGV Stomper M.A.D.", "<img image='images\dronePic_1.jpg' width='370' height='208'/><br/><br/>The <font color='#D22E2E'>UGV Stomper M.A.D.</font> (Mobile Arsenal Drone) allows you to change and customize your loadout at anytime when you are out in the field. It is <font color='#D22E2E'>not well armored</font> and <font color='#D22E2E'>is unarmed</font> so try your best to keep it out of sight and out of hot zones."],
 	
 	["42nd Armored", "Just before the coup, we lost contact with one of our armored platoons from the <font color='#D22E2E'>42nd Armored Division</font>. We last heard from them on the <marker name='armrMkr2'>road</marker> leading toward the Ekali Solar Plant. We presume they are all KIA as a result of Zane's forces no doubt. However, maybe one of their vehicles could still be <font color='#D22E2E'>operational</font> and could provide some <font color='#D22E2E'>armored protection</font> for the squad if repaired. It may be worth investigating."],
 	

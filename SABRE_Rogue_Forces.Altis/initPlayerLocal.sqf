@@ -7,6 +7,7 @@ enableSentences false;
 100 cutText ["Loading...", "BLACK FADED", 1];
 
 [player] execVM "Scripts\sabreLoadouts.sqf";
+player setStamina 100;
 {
 	if (!isPlayer _x && player == (leader _x)) then 
 	{

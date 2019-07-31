@@ -14,12 +14,15 @@ execVM "Scripts\serverTaskTrack.sqf";
 // Add action to ammoboxes
 {
 
-	[_x, [ "<t color='#D22E2E'>Open Virtual Arsenal</t>",{ ["Open",true] spawn BIS_fnc_arsenal; },[],10,true,true,"","(_target distance _this) < 3.5"] ] remoteExec [ "addAction", [0,-2] select (isMultiplayer && isDedicated), (alive _x)];
+	[_x, [ "<t color='#D22E2E'>Open Virtual Arsenal</t>",{ ["Open",true] spawn BIS_fnc_arsenal; },[],10,true,true,"","(_target distance _this) < 5"] ] remoteExec [ "addAction", [0,-2] select (isMultiplayer && isDedicated), (alive _x)];
 	
-}forEach [arsenal_1, arsenal_2, arsenal_pwr, arsenal_fire];
+}forEach [arsenal_1,arsenal_2,arsenal_pwr,arsenal_fire];
+
+// Add action to mobile arsenal drone, ensure player operating it cannot use the arsenal while using it
+[arsenal_drone, [ "<t color='#D22E2E'>Open Virtual Arsenal</t>",{ ["Open",true] spawn BIS_fnc_arsenal; },[],10,true,true,"","(_target distance _this) < 5 && ((UAVControl _target) select 1) != 'DRIVER' && ((UAVControl _target) select 1) != 'GUNNER'"] ] remoteExec [ "addAction", [0,-2] select (isMultiplayer && isDedicated), (alive arsenal_drone)];
 
 // Add action to meltdown laptop
-[ meltLaptop, [ "<t color='#D22E2E'>Begin Meltdown</t>","Scripts\powerHack.sqf",[],10,true,true,"","(_target distance _this) < 2.5"] ] remoteExec [ "addAction", [0,-2] select (isMultiplayer && isDedicated), true ];
+[meltLaptop, [ "<t color='#D22E2E'>Begin Meltdown</t>","Scripts\powerHack.sqf",[],10,true,true,"","(_target distance _this) < 2.5"] ] remoteExec [ "addAction", [0,-2] select (isMultiplayer && isDedicated), true ];
 
 /******************** MISSION PARAMETERS ***********************/
 // REVIVE PARAMETER IS SET IN SABRE TEAM INIT
