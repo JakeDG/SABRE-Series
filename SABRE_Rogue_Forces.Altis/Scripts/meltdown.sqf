@@ -52,7 +52,8 @@ if (compHacked) then
 		_fire = floor(random 3);
 		if (_fire == 1) then
 		{
-			"test_EmptyObjectForFireBig" createVehicle _pos;
+			//"test_EmptyObjectForFireBig" createVehicle _pos;
+			[_pos, "FIRE_VBIG"] call TP_fnc_createFireEffect;
 		};
 	} forEach _explLoc;
 	sleep 3.0;

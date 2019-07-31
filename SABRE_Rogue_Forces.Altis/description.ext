@@ -1,4 +1,5 @@
 author = "AlphaDog";
+briefingName = "SABRE: Rogue Forces";
 onloadname = "SABRE: Rogue Forces";
 loadscreen = "images\loadImg.jpg";
 onLoadMission = "During a coup, Sabre Team is deployed to distrupt rogue AAF operations in Southern Altis.";

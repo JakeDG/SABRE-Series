@@ -31,18 +31,24 @@ Mission Version:
 		- Updated to the latest version of Psycho's Revive (v3072018)
 		- Added autosaves for singleplayer
 		- Added a mobile arsenal drone at start point
+		- Added a damaged NATO MRAP on the road in front of the radio tower
+		- Added another virtual arsenal crate near the run down building at the firebase
+		- Added some more cover and AT turret defenses at the final base
 		- Fixed "Bug Enemy Comms" objective auto-completing on mission start after the Contact DLC update
+		- Fixed a bug that resulted in less enemy units attacking the base that the end
+		- Fixed a bug that resulted in less enemy units attacking the base that the end
+		- Fixed a classname issue in the flyBys.sqf script
 		- Adjusted some of Blazerunner's dialog
+		- Adjusted loadscreen intro text to be more centered
+		- Adjusted Sabre team's loadouts a bit
+		- Adjusted the reinforcement route and timings to ensure all enemy forces reach the last base
+		- Reduced AIS stabilize time by 5 seconds
+		- Reduced AIS revive time by 5 seconds
 		- Subtitles are now displayed using a new subtitle function
 		- Blazerunner is now escorted by two Blackfoot NATO gunships upon arriving at extraction
 		- Extended the time it takes for extraction to arrive by 15 seconds
-		- Adjusted loadscreen intro text to be more centered
 		- Moved a shelf that was clipping through a door a the Faronaki outpost
 		- The ammo caches at the first anti-air location are now able to be interacted with 
-		- Added another virtual arsenal crate near the run down building at the firebase
-		- Fixed a classname issue in the flyBys.sqf script
-		- Adjusted Sabre team's loadouts a bit
-		- Added a damaged NATO MRAP on the road in front of the radio tower
 		- Misc changes to aesthetics
 		- Unlocked most vehicles
 		- Randomized fuel levels of most vehicles

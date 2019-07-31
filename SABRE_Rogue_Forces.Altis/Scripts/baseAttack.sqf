@@ -4,15 +4,15 @@ if (!isServer) exitWith {};
 
 /* Create vehicles with crews */
 // Create lead attack vehicles
-_attVeh1 = [[16822.8,12344.9,0], 165, "I_MRAP_03_hmg_F", independent] call bis_fnc_spawnvehicle;
+_attVeh1 = [getMarkerPos "attVehSpawnMkr_1", 165, "I_MRAP_03_hmg_F", independent] call bis_fnc_spawnvehicle;
 sleep 0.5;
-_attVeh2 = [[16801.9,12423.7,0], 167, "I_APC_Wheeled_03_cannon_F", independent] call bis_fnc_spawnvehicle;
+_attVeh2 = [getMarkerPos "attVehSpawnMkr_2", 167, "I_APC_Wheeled_03_cannon_F", independent] call bis_fnc_spawnvehicle;
 sleep 0.5;
 
 // Create transport trucks
-_transVeh1 = [[16935.2,12557.8,0], 210, "I_Truck_02_covered_F", independent] call bis_fnc_spawnvehicle;
+_transVeh1 = [getMarkerPos "transSpawnMkr_1", 210, "I_Truck_02_covered_F", independent] call bis_fnc_spawnvehicle;
 sleep 0.5;
-_transVeh2 = [[16967.8,12595.6,0], 220, "I_Truck_02_covered_F", independent] call bis_fnc_spawnvehicle;
+_transVeh2 = [getMarkerPos "transSpawnMkr_2", 220, "I_Truck_02_covered_F", independent] call bis_fnc_spawnvehicle;
 sleep 0.5;
 
 /* Spawn infantry in the transport trucks */
@@ -30,7 +30,7 @@ _attGrp3 = [getMarkerPos "attInfSpawnMkr", independent, (configFile >> "CfgGroup
 _attGrp4 = [getMarkerPos "attInfSpawnMkr", independent, (configFile >> "CfgGroups" >> "Indep" >> "IND_F" >> "Infantry" >> "HAF_InfSquad"),[],[],[],[],[],20] call BIS_fnc_spawnGroup;
 
 /* Move troops into the trucks */
-_attackGrps = (units _attGrp1) + (units _attGrp2) + (units _attGrp3); // Add both groups together so only 1 loop needs to be performed
+_attackGrps = (units _attGrp1) + (units _attGrp2) + (units _attGrp3) + (units _attGrp4); // Add both groups together so only 1 loop needs to be performed
 
 // Move both groups in the transports
 { 
@@ -64,6 +64,8 @@ _attVeh2Wp1 setWaypointSpeed "FULL";
 _attVeh2Wp2 = (_attVeh2 select 2) addWaypoint [getMarkerPos "rForceWp_3", 1];
 _attVeh2Wp2 setWaypointType "SAD";
 
+sleep 10.0;
+
 // First transport vehicle
 _transVeh1Wp1 = (_transVeh1 select 2) addWaypoint [getMarkerPos "rForceWp_1", 0];
 [(_transVeh1 select 2), 2] setWaypointBehaviour "AWARE";
@@ -72,6 +74,8 @@ _transVeh1Wp1 setWaypointSpeed "FULL";
 
 _transVeh1Wp2 = (_transVeh1 select 2) addWaypoint [getMarkerPos "rForceWp_2a", 1];
 _transVeh1Wp2 setWaypointType "TR UNLOAD";
+
+sleep 5.0;
 
 // Second transport vehicle
 _transVeh2Wp1 = (_transVeh2 select 2) addWaypoint [getMarkerPos "rForceWp_1", 0];
