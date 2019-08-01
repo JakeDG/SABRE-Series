@@ -41,7 +41,7 @@ sleep 4.0;
 
 /* ["<t size='1.0' color='#D22E2E'>AlphaDog Presents...</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.85, 4, 4, 0, 200] spawn BIS_fnc_dynamicText;
 sleep 10.0; */
-101 cutText ["<t size='2.0' color='#D22E2E'>AlphaDog Presents...</t>", "BLACK", 4.0,true,true];
+101 cutText ["<t size='2.0' color='#D22E2E'>AlphaDog presents...</t>", "BLACK", 4.0,true,true];
 sleep 6.0;
 101 cutFadeOut 1.0;
 sleep 4.0;

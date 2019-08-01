@@ -190,6 +190,14 @@ Mission Version: 1.1
 		- Adjusted loadscreen text to be more centered (using different method than v2.4's)
 		- Removed Revo's subtitle function and added my own, which will now handle subtitles
 		- Adjusted subtitle timings a bit
+	
+	v2.5
+		- Fixed issues caused by the Contact update involving my custom functions triggering objectives to be completed
+		- Updated functions library
+		- Adjusted Sabre team's loadouts a bit
+		- Reduced AIS stabilize time by 5 seconds
+		- Reduced AIS revive time by 5 seconds
+		- Changed the town center marker to be less bright green 
 		
 *********************************************************************************************************************************
 
