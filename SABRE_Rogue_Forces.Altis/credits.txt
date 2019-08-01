@@ -36,7 +36,6 @@ Mission Version:
 		- Added some more cover and AT turret defenses at the final base
 		- Fixed "Bug Enemy Comms" objective auto-completing on mission start after the Contact DLC update
 		- Fixed a bug that resulted in less enemy units attacking the base that the end
-		- Fixed a bug that resulted in less enemy units attacking the base that the end
 		- Fixed a classname issue in the flyBys.sqf script
 		- Adjusted some of Blazerunner's dialog
 		- Adjusted loadscreen intro text to be more centered
@@ -52,6 +51,9 @@ Mission Version:
 		- Misc changes to aesthetics
 		- Unlocked most vehicles
 		- Randomized fuel levels of most vehicles
+	
+	V1.2 Hotfix
+		- Enabled dynamic simulation to newly added objects
 		
 *********************************************************************************************************************************
 
