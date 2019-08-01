@@ -38,6 +38,13 @@ Mission Version: 1.0
 		- Locked helicopters at the airbase
 		- Added info text when hacking Richman's Laptop
 		- Updated announcements page 
+	
+	v1.2
+		- Fixed issues caused by the Contact update involving my custom functions triggering objectives to be completed
+		- Updated functions library
+		- Adjusted Sabre team's loadouts a bit
+		- Reduced AIS stabilize time by 5 seconds
+		- Reduced AIS revive time by 5 seconds
 		
 *********************************************************************************************************************************
 

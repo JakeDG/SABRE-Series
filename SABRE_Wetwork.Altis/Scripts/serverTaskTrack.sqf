@@ -68,7 +68,7 @@ if (!isServer) exitWith {};
 		// Add secondary power objective to outpost
 		[sabre, [["outpostPwrTask", "secTasks"], "Shutdown the power at the AAF outpost by <font color='#D22E2E'>sabotaging</font> the <marker name ='pwrMrk_2'>transformer</marker> that routes power to the site.","Shutdown Outpost Power","", getPosATL pwrTrans_2, "created", "INTERACT"]] call FHQ_fnc_ttAddTasks;
 		
-		[pwrTrans_2, "Shut Off Power", 8] call AD_fnc_pickPutHold; // Add shut off action to transformer.
+		//[pwrTrans_2, "Shut Off Power", 8] call AD_fnc_pickPutHold; // Add shut off action to transformer.
 		sleep 6.0;
 		
 		[
@@ -262,6 +262,7 @@ if (!isServer) exitWith {};
 	{
 		[pwrTrans_2, "electricity_loop"] remoteExec ["say3D", [0,-2] select (isMultiplayer && isDedicated)]; 
 	};
+	
 	["outpostPwrTask", "succeeded"] call FHQ_fnc_ttSetTaskState;
 	
 	// Kill the power

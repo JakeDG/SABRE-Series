@@ -9,12 +9,14 @@
     Parameter(s):
     0: String - The speaker.
     1: String - What the speaker should say.
-    2: (Optional) Number - The amount of time the subtitle is displayed.
-    3: (Optional) String - Custom sound that plays when the subtitle is displayed
-    4: (Optional) String - Color of speaker text - default: "#469CED" for my OPTRE missions or "#D22E2E" for my SABRE missions
+    2: Number - The amount of time the subtitle is displayed.
+    3: (Optional) String - Color of speaker text - default: "#469CED" for my OPTRE missions or "#D22E2E" for my SABRE missions
+    4: (Optional) Number - The time it takes for the subtitle to fade in - default: 0.25 seconds
+    5: (Optional) Number - The resource layer that the test is displayed on - default: 198
     
+   
    Example:
-   ["HQ", "Looks like we've got trouble.", 10, "Sound", "#FFFFFF"] call AD_fnc_subtitle;
+   ["HQ", "Looks like we've got trouble.", 10] call AD_fnc_subtitle;
 */
 
 if (!isServer) exitwith {};
@@ -24,7 +26,7 @@ _this spawn
 	#define FADE_DURATION 0.5
 	#define TEXT_COLOR "#D22E2E"
 	
-	private ["_speaker", "_phrase", "_displayTime", "_sound", "_spkrColor"];
+	private ["_speaker", "_phrase", "_displayTime", "_fadeTime", "_sound", "_spkrColor"];
 	
 	params [
 		["_speaker", "", [""], 1], 

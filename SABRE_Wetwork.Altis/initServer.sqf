@@ -236,7 +236,8 @@ else
 	enableSaving [true,true]; // Enable saving for singleplayer
 };
 
-[pwrTrans_1, "Shut Off Power", 8] call AD_fnc_pickPutHold; // Add shut off action to transformer.
+[pwrTrans_1, "Shut Off Power", 8] call AD_fnc_pickPutHold; // Add shut off action to compound transformer.
+[pwrTrans_2, "Shut Off Power", 8] call AD_fnc_pickPutHold; // Add shut off action to outpost transformer.
 
 // Set Richman's bodyguard loadouts and remove enemy NVGs
 {
