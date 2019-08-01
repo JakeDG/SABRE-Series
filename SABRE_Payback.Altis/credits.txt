@@ -58,6 +58,14 @@ Mission Version: 1.0
 		- All wheeled vehicles fuel levels are randomized from 20% - 90%
 		- Outro music now starts playing when helicopter gets close to the extraction point
 	
+	v1.5
+		- Fixed issues caused by the Contact update involving my custom functions triggering objectives to be completed
+		- Updated functions library
+		- Adjusted Sabre team's loadouts a bit
+		- Reduced AIS stabilize time by 5 seconds
+		- Reduced AIS revive time by 5 seconds
+		- Removed the old sabreLoudouts.sqf script that was left behind from v1.4
+	
 *********************************************************************************************************************************
 
 Released:

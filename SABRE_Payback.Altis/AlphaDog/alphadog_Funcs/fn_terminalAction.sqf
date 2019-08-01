@@ -29,6 +29,9 @@ if (_text == "" || _textDL == "" || _textDone == "") exitwith {["ERROR: Action t
 // Set custom name in text
 _actionText = format ["<t color='#D22E2E'>%1</t>", _text];
 
+// Track object value
+_terminal setVariable ["termHacked", false, true];
+
 // Add action to terminal for all players and JIPs
 [_terminal, 
 	[ 	
@@ -78,6 +81,8 @@ _actionText = format ["<t color='#D22E2E'>%1</t>", _text];
 				};
 				
 				sleep 1.0;
+				
+				// Set object value to true
 				_target setVariable ["termHacked", true, true];
 			};
 		},
