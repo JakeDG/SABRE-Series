@@ -60,9 +60,14 @@ Mission Version:
 		- Attempted to fix the pilot not taking off when he enters the VTOL
 		- Adjusted intro text to center of the screen
 		- Adjusted Foster's (Sabre's Engineer) loadout
-		
-	Hotfix
-		- Fixed the person being revived by a medic not being fully healing after a revive
+
+	v1.5
+		- Fixed issues caused by the Contact update involving my custom functions triggering objectives to be completed
+		- Fixed a player being revived by a medic not being fully healing after the revive was complete
+		- Updated functions library
+		- Adjusted Sabre team's loadouts a bit
+		- Reduced AIS stabilize time by 5 seconds
+		- Reduced AIS revive time by 5 seconds
 		
 *********************************************************************************************************************************
 

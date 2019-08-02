@@ -6,12 +6,12 @@ enableSentences false;
 
 100 cutText ["Loading...", "BLACK FADED", 1];
 
-[player] execVM "Scripts\sabreLoadouts.sqf";
+[player] execVM "Scripts\sabreLoadoutsTanoa.sqf";
 {
 	if (!isPlayer _x && player == (leader _x)) then 
 	{
 		waitUntil{local _x && alive _x && !isNil "isStealth"};
-		[_x] execVM "Scripts\sabreLoadouts.sqf";
+		[_x] execVM "Scripts\sabreLoadoutsTanoa.sqf";
 		_x enableFatigue false;
 		
 		if (isStealth) then
