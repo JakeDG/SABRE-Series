@@ -35,3 +35,7 @@ if (alive fox && ((player distance fox) < 15)) then
 {
 	["Fox", "Oh, and welcome to the jungle, boys. Hopefully you won't die.", 10] call AD_fnc_subtitle;
 };
+
+// Save the game in singleplayer
+waitUntil {isNil "AD_subtitle_running"};
+if (!isMultiplayer && savingEnabled) then {saveGame;};

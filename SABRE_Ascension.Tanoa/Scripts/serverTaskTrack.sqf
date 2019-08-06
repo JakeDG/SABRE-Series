@@ -27,14 +27,24 @@ if (!isServer) exitWith {};
 		["clearTask", "succeeded"] call FHQ_fnc_ttSetTaskState;
 		sleep 3.0;
 		
-		[sabre, [["pilotTask", "stealTasks"], "Defend the VTOL Pilot from CSAT forces while he arrives and steals the VTOL.", "Protect Pilot", "", vtolPilot, "assigned", "DEFEND"]] call FHQ_fnc_ttAddTasks;
+		[sabre, [["pilotTask", "stealTasks"], "<font color='#D22E2E'>Defend the VTOL Pilot</font> from CSAT forces while he arrives and <font color='#D22E2E'>steals the VTOL</font>.", "Protect Pilot", "", vtolPilot, "assigned", "DEFEND"]] call FHQ_fnc_ttAddTasks;
 		
 		// Fox messege
-		[["RadioAmbient2"],AD_fnc_soundAmp] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
-		["<t size='0.6'><t color='#D22E2E'>Spectre:</t> Alright Sabre, my pilot is on his way. Make sure he gets to that VTOL safe and sound.</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 10, 0.25, 0, 198] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
-		sleep 6.0;
+		[
+			["Spectre","Alright Sabre, my pilot is on his way. Make sure he gets to that VTOL safe and sound.",10.0,"RadioAmbient2"], AD_fnc_subtitle
+		] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
+		sleep 12.0;
+	
+		// Fox messege
+		[
+			["Spectre","Be advised, one of my contacts has informed me that CSAT is sending reinforcements to Comms Bravo. Stay vigilant, Sabre! Spectre Out.",10.0,"RadioAmbient6"], AD_fnc_subtitle
+		] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
+		sleep 1.0;
 		
-		["<t size='0.6'><t color='#D22E2E'>Spectre:</t> Be advised, one of my contacts has informed me that CSAT is sending reinforcements to Comms Bravo. Stay vigilant!</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 10, 0.25, 0, 198] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
+		// Save the game in singleplayer
+		waitUntil {isNil "AD_subtitle_running"};
+		if (!isMultiplayer && savingEnabled) then {saveGame;};
+		sleep 1.0;
 		
 		// Ensure pilot gets in drivers seat of the VTOL (Added in V1.1)
 		waitUntil {sleep 1.0; (vtolPilot in vtol)};
@@ -60,7 +70,10 @@ if (!isServer) exitWith {};
 	//waitUntil {sleep 1.0; ((vtolPilot in vtol) && !isTouchingGround vtol)};
 	waitUntil {sleep 1.0; vtolPilot in vtol};
 	
-	["<t size='0.6'><t color='#D22E2E'>VTOL Pilot:</t> Thanks for the cover Sabre. I'm outta' here.</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 10, 0.25, 0, 198] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
+	// VTOL Pilot messege
+	[
+		["VTOL Pilot","Thanks for the cover, Sabre. I'm outta' here.",10.0,"RadioAmbient6"], AD_fnc_subtitle
+	] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
 	sleep 1.0;
 	
 	["pilotTask", "succeeded"] call FHQ_fnc_ttSetTaskState;
@@ -69,6 +82,11 @@ if (!isServer) exitWith {};
 	["stealTasks", "succeeded"] call FHQ_fnc_ttSetTaskState;
 	
 	["vtolBaseMkr", "ColorRed", "vtolBaseMkr"] call AD_fnc_crossMkr;
+	
+	// Save the game in singleplayer
+	waitUntil {isNil "AD_subtitle_running"};
+	if (!isMultiplayer && savingEnabled) then {saveGame;};
+	sleep 1.0;
 };
 
 // Steal tasks failed
@@ -104,9 +122,14 @@ if (!isServer) exitWith {};
 // EMP tracker task
 [] spawn
 {
-	waitUntil {sleep 1.0; (EMP getVariable "isPickPut")};
+	waitUntil {sleep 1.0; (EMP getVariable ["isPickPut_H",false])};
 	["empTask", "succeeded"] call FHQ_fnc_ttSetTaskState;
 	["empMkr", "ColorRed", "empMkr"] call AD_fnc_crossMkr;
+	
+	// Save the game in singleplayer
+	waitUntil {isNil "AD_subtitle_running"};
+	if (!isMultiplayer && savingEnabled) then {saveGame;};
+	sleep 1.0;
 };
 
 // EMP fail task
@@ -120,13 +143,19 @@ if (!isServer) exitWith {};
 // Intel task
 [] spawn
 {
-	waitUntil {sleep 1.0; ((term1 getVariable "isTermComp") && (term2 getVariable "isTermComp"))};
+	waitUntil {sleep 1.0; ((term1 getVariable ["isTermComp",false]) && (term2 getVariable ["isTermComp",false]))};
 	
-	[sabre, ["CSAT Intel", "[Translated] After years of research, we have finally found it! Who would've guessed that the planes crashed into a volcano of all things. By the looks of it, I believe that the planes weren't shot down, but that the EMP protoype that the cargo plane was carrying malfunctioned and sent both the plane and its escorts plummiting toward the ground. Luckily, the EMP seems mostly intact, though it's been sitting underground for a few years. The technology used to create it is ancient, but through extensive reverse engineering I believe that we could have weaponized EMPs in just a couple years. - March 11, 2033"]] call FHQ_fnc_ttAddBriefing;
+	// Add CSAT intel to briefing
+	[sabre, ["CSAT Intel", "[Translated] After years of research, we have finally found it! Who would've guessed that the planes crashed into a volcano of all things. By the looks of it, I believe that the planes weren't shot down, but that the EMP prototype that the cargo plane was carrying malfunctioned and sent both the plane and its escorts plummeting toward the ground. Luckily, the EMP seems mostly intact, though it's been sitting underground for a few years. The technology used to create it is ancient, but through extensive reverse engineering I believe that we could have weaponized EMPs in just a couple years. - March 11, 2033"]] call FHQ_fnc_ttAddBriefing;
 	sleep 1.0;
 	
 	["intelTask", "succeeded"] call FHQ_fnc_ttSetTaskState;
 	["volMkr", "ColorRed", "volMkr"] call AD_fnc_crossMkr;
+	
+	// Save the game in singleplayer
+	waitUntil {isNil "AD_subtitle_running"};
+	if (!isMultiplayer && savingEnabled) then {saveGame;};
+	sleep 1.0;
 };
 
 // Extract task
@@ -138,71 +167,45 @@ if (!isServer) exitWith {};
 	["primTasks", "succeeded"] call FHQ_fnc_ttSetTaskState;
 	sleep 3.0;
 	
-	_extMkr = createMarker ["extMkr", [8889.37,11898.2,0]];
-	"extMkr" setMarkerText "Extraction";
-	"extMkr" setMarkerColor "ColorBlufor";
-	"extMkr" setMarkerType "hd_pickup";
+	// Remove bandit markers
+	deleteMarker "banditMkr_1";
+	deleteMarker "banditMkr_2";
 	
-	[sabre, ["extTask", "Head to the lumberyard for extraction!<br/><font color='#D22E2E'>One of Agent Fox's contact will be arriving in a civilian truck to pick you up.</font>", "Move to Extraction Point","Extract",getMarkerPos "extMkr", "assigned"]] call FHQ_fnc_ttAddTasks;
+	// Create area marker
+	"|extMkr_1|[10327.8,11888.5]|Empty|ELLIPSE|[1050,1050]|0|FDiagonal|colorOPFOR|1" call BIS_fnc_stringToMarker;
+	"|extMkr_2|[10327.8,11888.5]|Empty|ELLIPSE|[1050,1050]|0|Border|colorOPFOR|1" call BIS_fnc_stringToMarker;
+	
+	[sabre, ["extTask", "<font color='#D22E2E'>Leave the area</font> by any means necessary!", "Leave the Area","",getMarkerPos "extMkr_1","assigned"]] call FHQ_fnc_ttAddTasks;
 	sleep 3.0;
 	
 	// Fox messege
-	[["RadioAmbient8"],AD_fnc_soundAmp] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
-	["<t size='0.6'><t color='#D22E2E'>Spectre:</t> Sabre, CSAT just dispatched two gunships! ETA three mikes. Get to the lumberyard due west of the volcano for extraction. Haul ass!</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 10, 0.25, 0, 198] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
-	
-	canExtract = true;
+	[
+		["Spectre","Sabre, we just intercepted CSAT comms! They've dispatched two Kajman gunships! Inbound, ETA three mikes. You guys need to get out of the AO however you can!",10.0,"RadioAmbient8"], AD_fnc_subtitle
+	] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
+	sleep 12.0;
 };
 
-// Extracted, end mission
 [] spawn
 {
-	waitUntil {sleep 1.0; (canExtract && ({(_x in escapeVeh)} count units sabre == {alive _x} count units sabre))};
-	
-	[escapeVeh, false] remoteExec ["lock",[0,-2] select (isMultiplayer && isDedicated)];
+	waitUntil {sleep 1.0; extracted};
 
 	["extTask", "succeeded"] call FHQ_fnc_ttSetTaskState;
 	sleep 1.0;
 	
-	["<t size='0.6'><t color='#D22E2E'>Driver:</t> Okay, we're outta' here!</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 10, 0.25, 0, 198] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
-	sleep 2.0;
+	// Fox messege
+	[
+		["Spectre","Good, you guys made it out alive. You did excellent work today, Sabre. We'll link back up at base soon. Spectre out.",10.0,"RadioAmbient8"], AD_fnc_subtitle
+	] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
 	
-	"Watchtower" remoteExec ["playMusic",[0,-2] select (isMultiplayer && isDedicated)];
-	sleep 5.0;
+	"LeadTrack01b_F_EXP" remoteExec ["playMusic",[0,-2] select (isMultiplayer && isDedicated)];
+	sleep 13.0;
 	
 	[] remoteExec ["AD_fnc_thanks", [0,-2] select (isMultiplayer && isDedicated)];
-	sleep  30.0;
+	sleep  15.0;
 	
 	activateKey "MissionCompleted";
 	sleep 1.0;
 	["End_Win",true,true,false] remoteExec ["BIS_fnc_endMission"];
-};
-
-// Extract dead
-[] spawn
-{
-	waitUntil {sleep 1.0; canExtract && !alive escapeVeh};
-	
-	["extTask", "failed"] call FHQ_fnc_ttSetTaskState;
-	sleep 1.0;
-	
-	// Fox messege
-	[["RadioAmbient6"],AD_fnc_soundAmp] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
-	["<t size='0.6'><t color='#D22E2E'>Spectre:</t> Dammmit, Sabre! Looks like the extraction vehicle was destroyed!</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 10, 0.25, 0, 198] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
-	sleep 8.0;
-	["<t size='0.6'><t color='#D22E2E'>Spectre:</t> Move to the alt extraction point at the village of Bwawa! Hurry!</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 10, 0.25, 0, 198] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
-	
-	[sabre, ["extTaskAlt", "The extraction vehicle has been destroyed!<br/><font color='#D22E2E'>Move to the secondary extraction point at the Village of Bwawa</font>.", "Move to Bwawa","Move",getMarkerPos "extAlt", "assigned"]] call FHQ_fnc_ttAddTasks;
-	
-	[] spawn
-	{
-		waitUntil {sleep 1.0; !isNil "atAltExtract"};
-		
-		["extTaskAlt", "succeeded"] call FHQ_fnc_ttSetTaskState;
-		sleep 3.0;
-		[] remoteExec ["AD_fnc_thanks", [0,-2] select (isMultiplayer && isDedicated)];
-		sleep 12.0;
-		["End_Win",true,true,true] call BIS_fnc_endMission;
-	};
 };
 
 // Possible volcano reinforcements

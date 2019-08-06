@@ -4,7 +4,7 @@ waitUntil {!isNull player};
 enableTeamSwitch false;
 enableSentences false;
 
-100 cutText ["Loading...", "BLACK FADED", 1];
+//100 cutText ["Loading...", "BLACK FADED", 1];
 
 [player] execVM "Scripts\sabreLoadoutsTanoa.sqf";
 {
@@ -34,13 +34,13 @@ if (_paramfatigue == 0) then
 	player enableFatigue false;
 };
 
-100 cutText ["Loading Complete", "BLACK FADED", 1];
+//100 cutText ["Loading Complete", "BLACK FADED", 1];
 waitUntil{!isNil "BIS_fnc_init"};
 [player] call AD_fnc_clientLoaded;
 
 if (isNil "introDone") then 
 {
-	execVM "Scripts\intro.sqf";
+	//execVM "Scripts\intro.sqf";
 }
 else
 {

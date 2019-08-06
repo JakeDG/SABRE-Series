@@ -1,7 +1,8 @@
 if (!isServer) exitWith {};
 
 /******************** SERVER VARIABLES ***********************/
-canExtract = false;
+//missionNamespace setVariable ["extracted",false,false];
+extracted = false;
 
 /******************** SERVER SCRIPTS ***********************/
 execVM "briefing.sqf";
@@ -13,14 +14,14 @@ execVM "Scripts\serverTaskTrack.sqf";
 // Add action to ammoboxes
 {
 
-	[_x, [ "<t color='#D22E2E'>Open Virtual Arsenal</t>",{ ["Open",true] spawn BIS_fnc_arsenal; },[],10,true,true,"","(_target distance _this) < 3.5"] ] remoteExec [ "addAction", [0,-2] select (isMultiplayer && isDedicated), (alive _x)];
+	[_x, [ "<t color='#D22E2E'>Open Virtual Arsenal</t>",{ ["Open",true] spawn BIS_fnc_arsenal; },[],10,true,true,"","(_target distance _this) < 5"] ] remoteExec [ "addAction", [0,-2] select (isMultiplayer && isDedicated), (alive _x)];
 	
 }forEach [arsenal_1,arsenal_2,arsenal_3];
 
 // Play theme from the radio on table in the meeting hut
 [] spawn
 {
-	waitUntil {sleep 1.0; ({!(_x in insertVeh)} count units sabre == {alive _x} count units sabre)};
+	waitUntil {sleep 1.0; {!(_x in insertVeh)} count units sabre == {alive _x} count units sabre};
 	
 	_i = 0;
 	while {alive hutRadio && (_i < 3)} do
@@ -48,6 +49,32 @@ switch (_paramTime) do
 	case 2: // Evening
 	{
 		setDate [2035, 8, 29, 16, 20];
+	};
+};
+
+// Set weather
+_paramWeather = "Weather" call BIS_fnc_getParamValue;
+switch (_paramWeather) do 
+{
+	case 0: // Clear
+	{
+		[0] call BIS_fnc_setOvercast;
+	};
+	case 1: // Cloudy
+	{
+		[0.25] call BIS_fnc_setOvercast;
+	};
+	case 2: // Overcast
+	{
+		[0.5] call BIS_fnc_setOvercast;
+	};
+	case 3: // Rainy
+	{
+		[0.75] call BIS_fnc_setOvercast;
+	};
+	case 4: // Stormy
+	{
+		[1] call BIS_fnc_setOvercast;
 	};
 };
 
