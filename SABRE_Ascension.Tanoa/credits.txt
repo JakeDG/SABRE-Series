@@ -86,7 +86,7 @@ Mission Version:
 		- Moved the fuel truck to the other side of where the VTOL take off from to avoid rare unnecessary collisions 
 		- Corrected the "Situation" tab in the briefing to match up with the current SABRE storyline
 		- Unlocked most vehicles
-		- Miscellaneous changes to mission asthetics
+		- Miscellaneous changes to mission aesthetics
 		
 *********************************************************************************************************************************
 
