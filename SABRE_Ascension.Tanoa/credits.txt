@@ -64,10 +64,29 @@ Mission Version:
 	v1.5
 		- Fixed issues caused by the Contact update involving my custom functions triggering objectives to be completed
 		- Fixed a player being revived by a medic not being fully healing after the revive was complete
+		- Fixed not being fully healed after being revived by a medic
 		- Updated functions library
+		- Updated old subtitles to use new subtitle function
 		- Adjusted Sabre team's loadouts a bit
+		- Adjusted loadscreen intro text to be more centered
+		- Adjusted custom player difficulty to allow a 60% chance of each defense vehicle spawning at predesignated locations
+		- Changed how the extraction is completed. You now just have to leave the vicinity of the area of operations.
+		- Changed "Place tracker" action with a hold action
+		- Added images for the objectives player start out with
+		- Added autosaves for singleplayer
+		- Added Fox's bio to the Sabre codex
+		- Added ambient soundtrack
+		- Added more lighting at Comms Alpha and Bravo to assist in the night version of this mission
+		- Added a check to see if the VTOL is too damaged to fly, but does not blow up. Steal VTOL objective fails if this occurs.
 		- Reduced AIS stabilize time by 5 seconds
 		- Reduced AIS revive time by 5 seconds
+		- Remove need for weatherParam.hpp (Weather is now handled through a dedicated server friendly vanilla function)
+		- Removed two songs "Top Secret" by Sovereign and All Along the Watchtower by Jimi Hendrix
+		- Removed radio music from FM radio in Fox's hut
+		- Moved the fuel truck to the other side of where the VTOL take off from to avoid rare unnecessary collisions 
+		- Corrected the "Situation" tab in the briefing to match up with the current SABRE storyline
+		- Unlocked most vehicles
+		- Miscellaneous changes to mission asthetics
 		
 *********************************************************************************************************************************
 
@@ -89,10 +108,6 @@ Music Credits:
 	DISCLAIMER: I did not create, nor was I involved in the creation of any of the songs used in this mission. All ownership rights are property of their respective owners.
 	
 	* Paint It, Black by The Rolling Stones
-	
-	* Top Secret by Sovereign
-	
-	* All Along the Watchtower by Jimi Hendrix
 	
 **********************************************************************************************************************************
 

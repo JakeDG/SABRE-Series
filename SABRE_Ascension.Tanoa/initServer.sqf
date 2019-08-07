@@ -17,20 +17,6 @@ execVM "Scripts\serverTaskTrack.sqf";
 	[_x, [ "<t color='#D22E2E'>Open Virtual Arsenal</t>",{ ["Open",true] spawn BIS_fnc_arsenal; },[],10,true,true,"","(_target distance _this) < 5"] ] remoteExec [ "addAction", [0,-2] select (isMultiplayer && isDedicated), (alive _x)];
 	
 }forEach [arsenal_1,arsenal_2,arsenal_3];
-
-// Play theme from the radio on table in the meeting hut
-[] spawn
-{
-	waitUntil {sleep 1.0; {!(_x in insertVeh)} count units sabre == {alive _x} count units sabre};
-	
-	_i = 0;
-	while {alive hutRadio && (_i < 3)} do
-	{
-		_i = _i + 1;
-		[hutRadio, "TopSecret"] remoteExec [ "say3D", [0,-2] select (isMultiplayer && isDedicated)];
-		sleep 330.0; // Length = 5:30
-	};
-};
  
 /******************** MISSION PARAMETERS ***********************/
 // REVIVE PARAMETER IS SET IN SABRE TEAM INIT
@@ -101,7 +87,7 @@ switch (_paramDifficulty) do
 	case 0: // Player custom difficulty
 	{
 		_vehCustom = ["","O_T_MRAP_02_hmg_ghex_F","O_T_LSV_02_armed_ghex_F","O_T_LSV_02_armed_ghex_F",""];
-		for "_i" from 0 to 1 do
+		for "_i" from 0 to 2 do
 		{
 			_randVeh = selectRandom _vehCustom;
 			if (_randVeh != "") then 
@@ -188,7 +174,7 @@ switch (_paramDifficulty) do
 			
 		} forEach allUnits;
 		
-		_vehHard = ["O_T_MRAP_02_hmg_ghex_F","O_T_MRAP_02_hmg_ghex_F","O_T_LSV_02_armed_ghex_F","","O_T_APC_Wheeled_02_rcws_ghex_F"];
+		_vehHard = ["","O_T_MRAP_02_hmg_ghex_F","O_T_MRAP_02_hmg_ghex_F","O_T_LSV_02_armed_ghex_F","","O_T_APC_Wheeled_02_rcws_ghex_F"];
 		for "_i" from 0 to 1 do
 		{
 			_randVeh = selectRandom _vehHard;
@@ -245,6 +231,65 @@ switch (_paramDifficulty) do
 			sleep 0.1;
 		};
 	};
+};
+
+// Set ambient music
+_paramMusic = "Music" call BIS_fnc_getParamValue;
+if (_paramMusic == 1) then 
+{
+	trackList = [
+			"Fallout",
+			"AmbientTrack01a_F",
+			"LeadTrack02_F",
+			"AmbientTrack03_F",
+			"SkyNet",
+			"Wasteland",
+			"LeadTrack01_F_Curator",
+			"LeadTrack03_F_Mark",
+			"LeadTrack02_F_EXP",
+			"LeadTrack04_F_EXP",
+			"AmbientTrack01_F_EXP",
+			"AmbientTrack02_F_EXP",
+			"LeadTrack01_F_Orange",
+			"AmbientTrack01_F_Orange",
+			"AmbientTrack01a_F_Tacops",
+			"AmbientTrack01b_F_Tacops",
+			"AmbientTrack02a_F_Tacops",
+			"AmbientTrack02b_F_Tacops",
+			"AmbientTrack03a_F_Tacops",
+			"AmbientTrack03b_F_Tacops",
+			"AmbientTrack04a_F_Tacops",
+			"AmbientTrack04b_F_Tacops",
+			"AmbientTrack01_F_Tank"
+		];
+
+	publicVariable "trackList";
+
+	if (!isDedicated) then // All music is synced over the network through player host
+	{
+		ehID = addMusicEventHandler [
+										"MusicStop", 
+										{
+											[] spawn
+											{
+												sleep 5.0;
+												(selectRandom trackList) remoteExec ["playMusic",0];
+											};
+										}
+									];
+		dedicatedMusic = false;
+		publicVariable "dedicatedMusic";
+	}
+	else
+	{
+		dedicatedMusic = true;
+		publicVariable "dedicatedMusic";
+	};
+}
+else
+{
+	dedicatedMusic = false;
+	publicVariable "dedicatedMusic";
 };
 
 /******************** OTHER SERVER STUFF ***********************/

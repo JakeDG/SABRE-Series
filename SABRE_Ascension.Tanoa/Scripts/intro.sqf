@@ -29,22 +29,27 @@ sleep 1.0;
 
 10 fadeSound 1; // Fade sound back in
 sleep 5.0;
-["<t  size = '1.0'>Somewhere in Northern Tanoa...</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.85, 4, 4, 0, 200] spawn BIS_fnc_dynamicText;
-sleep 10.0;
 
-["<t size='1.0' color='#D22E2E'>AlphaDog Presents...</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.85, 4, 4, 0, 200] spawn BIS_fnc_dynamicText;
+101 cutText ["<t size='2.0'>Somewhere in Northern Tanoa...", "BLACK", 4.0,true,true];
+sleep 6.0;
+101 cutFadeOut 1.0;
+sleep 4.0;
 
+101 cutText ["<t size='2.0' color='#D22E2E'>AlphaDog presents...", "BLACK", 3.0,true,true];
 playMusic "PIB"; // Play intro music
-sleep 10.0;
-
-["<t  size = '3.0' shadow = '0' color='#D22E2E'>SABRE: </t><t  size = '3.0' shadow = '0'>Ascension</t>", safeZoneX+0.45,safeZoneY+safeZoneH-0.9, 8, 7, 0, 200] spawn BIS_fnc_dynamicText;
+sleep 6.0;
+101 cutFadeOut 1.0;
 sleep 5.0;
+
+101 cutText ["<t  size = '5.0' shadow = '0' color='#D22E2E'>SABRE:<br/></t><t  size = '5.0' shadow = '0'>Ascension</t>", "BLACK", 4.0,true,true];
+sleep 4.0;
+101 cutFadeOut 4.5;
 
 100 cutText ["", "BLACK IN", 15];
 enableRadio true;
 enableEnvironment true;
 
-sleep 12.0;
+sleep 15.0;
 _date = [] call AD_fnc_getDate;
 _time = [] call AD_fnc_getTime;
 _text = 
@@ -61,3 +66,20 @@ enableSentences true;
 introDone = true;
 publicVariable "introDone";
 
+if (("Music" call BIS_fnc_getParamValue) == 1) then
+{
+	waitUntil{sleep 1.0; !isNil "dedicatedMusic"};
+	if (dedicatedMusic) then // Only works on dedicated servers
+	{
+		ehID = addMusicEventHandler [
+									"MusicStop", 
+									{
+										[] spawn
+										{
+											sleep 5.0;
+											playMusic (selectRandom trackList);;
+										};
+									}
+								];
+	};
+};

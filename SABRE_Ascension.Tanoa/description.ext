@@ -98,6 +98,7 @@ class Params
 		texts[] = {"Custom (Host's difficulty settings)","Regular","Hardened","Commando"};
 		default = 0;
 	};
+	
 	class Revive
 	{
 		title = "Psycho's Revive (Auto-deactivated if the ACE3 mod is detected)";
@@ -105,6 +106,7 @@ class Params
 		texts[] = {"Off","On"};
 		default = 1;
 	};
+	
 	class Fatigue
 	{
 		title = "Enable Fatigue";
@@ -112,12 +114,29 @@ class Params
 		texts[] = {"No", "Yes"};
 		default = 1;
 	};
+	
 	class Stealth
 	{
 		title = "Enable Stealth (Adjusts squad loadouts and AI behavior)";
 		values[] = {0,1};
 		texts[] = {"No", "Yes"};
 		default = 0;
+	};
+	
+	class EnemyNVG
+	{
+		title = "Enemies equipped with night vision (Only effects military enemies)";
+		values[] = {0,1};
+		texts[] = {"No","Yes"};
+		default = 1;
+	};
+	
+	class Music
+	{
+		title = "Ambient Music (Songs not synced between players on dedicated server)";
+		values[] = {0,1};
+		texts[] = {"Off", "On"};
+		default = 1;
 	};
 };
 
@@ -130,23 +149,6 @@ class CfgMusic
 		name = "Paint It, Black";
 		sound[] = {"Music\PaintItBlack.ogg", 2, 1};
 	};
-	class Watchtower
-	{
-		name = "All Along the Watchtower";
-		sound[] = {"Music\Watchtower.ogg", 2, 1};
-	};
-};
-
-class CfgSounds
-{
-	sounds[] = {};
-
-	class TopSecret
-	{
-		name = "Top Secret";
-		sound[] = {"Sounds\TopSecret.ogg", 0.9, 1};
-		titles[] = {0, ""};
-	};
 };
 
 class CfgDebriefing
@@ -155,7 +157,7 @@ class CfgDebriefing
 	{
 		title = "Mission Completed";
 		subtitle = "CSAT Assets and Intel Acquired";
-		description = "Sabre team successfully completed all mission critical tasks. The intel and assets they acquired will definitely help Fox uncover CSAT's plan in the future.<br/><br/>If you liked/disliked this mission be sure to give it a rating, and/or tell me what you thought about it in the comments. Also, if you haven't played any of the other episodes yet, I suggest giving them a try. You can find a link to the Sabre Commandos Collection on this mission's Steam workshop page. Thank you for playing, and I hope you had fun!";
+		description = "Sabre Team successfully completed all mission critical tasks. The intel and assets they acquired will definitely help Fox uncover CSAT's plan in the future.<br/><br/>If you liked/disliked this mission be sure to give it a rating, and/or tell me what you thought about it in the comments. Also, if you haven't played any of the other episodes yet, I suggest giving them a try. You can find a link to the Sabre Commandos Collection on this mission's Steam workshop page. Thank you for playing, and I hope you had fun!";
 		pictureBackground = "images\loadImg.jpg";
 	};
 	

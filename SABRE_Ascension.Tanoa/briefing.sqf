@@ -3,15 +3,15 @@
 	
 	["primTasks", "These are your primary objectives. In order to finish the mission, all of these tasks must be completed.", "Primary Objectives", ""],   
     
-	[["meetTask", "primTasks"], "Meet up with <font color='#D22E2E'>Agent Fox</font>, in the <marker name='ctrgMkr'>Village of Nasua</marker>, which he and his <font color='#D22E2E'>CTRG</font> team cleared for you.", "Meet Agent Fox", "", Fox, "assigned", "meet"],
+	[["meetTask", "primTasks"], "<img image='images\meetFox.jpg' width='370' height='208'/><br/><br/>Meet up with <font color='#D22E2E'>Agent Fox</font>, in the <marker name='ctrgMkr'>Village of Nasua</marker>, which he and his <font color='#D22E2E'>CTRG</font> team cleared for you.", "Meet Agent Fox", "", Fox, "assigned", "meet"],
 	
-	[["stealTasks", "primTasks"], "Assist Agent Fox in aquiring a <font color='#D22E2E'>CSAT Y-32 Xi'an VTOL</font> that is located at <marker name='vtolBaseMkr'>Comms Bravo</marker>.","Help Steal VTOL", ""],
+	[["stealTasks", "primTasks"], "<img image='images\vtolPic.jpg' width='370' height='208'/><br/><br/>Assist Agent Fox in aquiring a <font color='#D22E2E'>CSAT Y-32 Xi'an VTOL</font> that is located at <marker name='vtolBaseMkr'>Comms Bravo</marker>.","Help Steal VTOL", ""],
 	
-	[["clearTask", "stealTasks"], "<font color='#D22E2E'>Clear out</font> the CSAT outpost at <marker name='vtolBaseMkr'>Comms Bravo</marker> so Fox's VTOL pilot can attempt to <font color='#D22E2E'>steal the VTOL</font>.","Clear Comms Bravo","",getMarkerPos "vtolBaseMkr", "created", "attack"],
+	[["clearTask", "stealTasks"], "<img image='images\commsBravo.jpg' width='370' height='208'/><br/><br/><font color='#D22E2E'>Clear out</font> the CSAT outpost at <marker name='vtolBaseMkr'>Comms Bravo</marker> so Fox's VTOL pilot can attempt to <font color='#D22E2E'>steal the VTOL</font>.","Clear Comms Bravo","",getMarkerPos "vtolBaseMkr", "created", "attack"],
 	
-	[["empTask", "primTasks"], "Place a GPS tracker on the <font color='#D22E2E'>CSAT EMP</font> stored somewhere at <marker name='empMkr'>Comms Alpha</marker>.","Place Tracker on EMP","",getMarkerPos "empMkr", "created", "interact"],
+	[["empTask", "primTasks"], "<img image='images\commsAlpha.jpg' width='370' height='208'/><br/><br/>Place a GPS tracker on the <font color='#D22E2E'>CSAT EMP</font> stored somewhere at <marker name='empMkr'>Comms Alpha</marker>.","Place Tracker on EMP","",getMarkerPos "empMkr", "created", "interact"],
 	
-	[["intelTask", "primTasks"], "<font color='#D22E2E'>Download</font> all the intel CSAT has stored on their research <font color='#D22E2E'>data terminals</font> located in <marker name='volMkr'>Mount Tanoa</marker>. Fox believes there are <font color='#D22E2E'>only two data terminals</font> at the research site.","Download Intel","",getMarkerPos "volMkr", "created", "intel"]
+	[["intelTask", "primTasks"], "<img image='images\digSite.jpg' width='370' height='208'/><br/><br/><font color='#D22E2E'>Download</font> all the intel CSAT has stored on their research <font color='#D22E2E'>data terminals</font> located at a dig site in <marker name='volMkr'>Mount Tanoa</marker>. Fox believes there are <font color='#D22E2E'>only two data terminals</font> at the research site.","Download Intel","",getMarkerPos "volMkr", "created", "intel"]
 	
 ] call FHQ_fnc_ttAddTasks;
 
@@ -19,11 +19,11 @@
 [ sabre,
 
 	// MISSION BRIEF *********************************************************************
-	["Situation", "<img image='images\fox.jpg' width='370' height='208'/><br/><br/>Last week we received information from one of our agents operating in the southern Pacific Island of Tanoa. He said that <font color='#D22E2E'>CSAT is planning something big</font>. The agent goes by the codename ''<font color='#D22E2E'>Fox</font>'', and he has been running intelligence gathering oprerations on Tanoa for about 6 years now. He's in command of a CTRG spec ops team and a small two man Tier One unit. However, he said that he needs more men so he can figure out CSAT's plan before it's to late. So we decided to send the best men we had for the job. You'll be deep in CSAT territory on Tanoa, so watch your backs.<br/><br/>Your team will be <font color='#D22E2E'>brought to the Tanoan shoreline via a civilian boat</font> so as not to draw attention. Once on shore, you are to wait for Fox's contact, who will arrive in a truck to bring you to him.<br/><br/>Also, we wanted to inform you that the <font color='#D22E2E'>coup in Altis</font> has almost been contained and we've managed to retake the Capital thanks to your team's efforts a couple of weeks ago. However, we still haven't been able to locate the main coup conspirator, AAF General Zane."],
+	["Situation", "<img image='images\fox.jpg' width='370' height='208'/><br/><br/>For a long time we have received requests from one of our operatives operating in the southern Pacific Island of Tanoa. He believes that <font color='#D22E2E'>CSAT has been planning something big</font> for a few years, and since your team's discovery of a CSAT EMP on Altian soil, we are now inclined to believe him. The operative goes by the codename ''<font color='#D22E2E'>Fox</font>'', and he has been running intelligence gathering operations on Tanoa for about 6 years now. He's in command of a CTRG spec ops team and a small two man Tier One unit. He said that he needs more men so he can figure out CSAT's plan before it's too late. So we've decided to send the best men we had for the job. You'll be deep in CSAT territory on Tanoa, so watch your backs.<br/><br/>Your team will be <font color='#D22E2E'>brought to the Tanoan shoreline via a civilian boat</font> so as not to draw attention. Once on shore, you are to wait for Fox's contact, who will arrive in a truck to bring you to him.<br/><br/>Also, we wanted to inform you that the <font color='#D22E2E'>coup in Altis</font> has almost been contained and we've managed to retake the Capital thanks to your team's efforts a couple of weeks ago. However, we still haven't been able to locate the main coup conspirator, AAF General Zane."],
 	
 	["Mission", "<font color='#D22E2E'>Assist Agent Fox</font> by acquiring CSAT assets and gathering information on their operations on Tanoa."],  
 	
-	["Supports", "<img image='images\drone.jpg' width='370' height='208'/><br/><br/>Agent Fox is providing your squad with a <font color='#D22E2E'>A-2 Darter UAV</font>."],
+	["Supports", "<img image='images\drone.jpg' width='370' height='208'/><br/><br/>Agent Fox is providing your squad with an <font color='#D22E2E'>A-2 Darter UAV</font>."],
 	
 	["Signal", "<font color='#D22E2E'>Sabre</font> - Your team<br/><br/><font color='#D22E2E'>Spectre</font> - Agent Fox"],
 	
@@ -36,7 +36,7 @@
 	
 	["Credits", "Testing/Feedback", "<font color='#D22E2E' size='20'>Mission Testers:</font><br/>Garrett S.<br/><br/>Thanks for the feedback!"],
 	
-	["Credits", "Music", "<font color='#D22E2E' size='20'>Music Credits:</font><br/><font color='#D22E2E'>Paint It, Black</font> by The Rolling Stones<br/><font color='#D22E2E'>Top Secret</font> by Sovereign<br/><font color='#D22E2E'>All Along the Watchtower</font> by Jimi Hendrix"],
+	["Credits", "Music", "<font color='#D22E2E' size='20'>Music Credits:</font><br/><font color='#D22E2E'>Paint It, Black</font> by The Rolling Stones"],
 	
 	["Credits", "Special Thanks", "<font color='#D22E2E' size='20'>Thank You:</font><br/><font color='#D22E2E'>Varanon</font> for FHQ Tasktracker (Great tool for making multiplayer compatible tasks)<br/><font color='#D22E2E'>Revo</font> for 3den Enhanced (Excellent improvements to the 3D editor)<br/><font color='#D22E2E'>LSD</font> for ZEC - Zeus and Eden Templates / Building Compositions (Saved me so much time)<br/><font color='#D22E2E'>Psycho</font> for his excellent revive script<br/><font color='#D22E2E'>Sovereign</font> for his incredible stealth music."],
 	

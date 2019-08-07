@@ -7,6 +7,13 @@ if (!isServer) exitWith {};
 	
 	["meetTask", "succeeded", "clearTask", "empTask", "intelTask", "pilotTask"] call FHQ_fnc_ttSetTaskStateAndNext;
 	sleep 1.5;
+	
+	// Save the game in singleplayer
+	waitUntil {isNil "AD_subtitle_running"};
+	if (!isMultiplayer && savingEnabled) then {saveGame;};
+	sleep 1.0;
+
+	// Fox conversation
 	[[], "Scripts\foxCon.sqf"] remoteExec ["BIS_fnc_execVM", [0,-2] select (isMultiplayer && isDedicated)];
 	
 	// Fade out intro song
@@ -15,6 +22,8 @@ if (!isServer) exitWith {};
 	"" remoteExec ["playMusic",[0,-2] select (isMultiplayer && isDedicated)];
 	sleep 5.0;
 	[5,1] remoteExec ["fadeMusic", [0,-2] select (isMultiplayer && isDedicated)];
+	
+	"AmbientTrack02_F_EXP" remoteExec ["playMusic",[0,-2] select (isMultiplayer && isDedicated)];
 };
 
 // Pilot defend task
@@ -27,6 +36,11 @@ if (!isServer) exitWith {};
 		["clearTask", "succeeded"] call FHQ_fnc_ttSetTaskState;
 		sleep 3.0;
 		
+		// Save the game in singleplayer
+		waitUntil {isNil "AD_subtitle_running"};
+		if (!isMultiplayer && savingEnabled) then {saveGame;};
+		sleep 1.0;
+		
 		[sabre, [["pilotTask", "stealTasks"], "<font color='#D22E2E'>Defend the VTOL Pilot</font> from CSAT forces while he arrives and <font color='#D22E2E'>steals the VTOL</font>.", "Protect Pilot", "", vtolPilot, "assigned", "DEFEND"]] call FHQ_fnc_ttAddTasks;
 		
 		// Fox messege
@@ -37,13 +51,8 @@ if (!isServer) exitWith {};
 	
 		// Fox messege
 		[
-			["Spectre","Be advised, one of my contacts has informed me that CSAT is sending reinforcements to Comms Bravo. Stay vigilant, Sabre! Spectre Out.",10.0,"RadioAmbient6"], AD_fnc_subtitle
+			["Spectre","Be advised, CSAT radio activity indicates that they're probably sending reinforcements to Comms Bravo. Stay vigilant, Sabre! Spectre Out.",10.0,"RadioAmbient6"], AD_fnc_subtitle
 		] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
-		sleep 1.0;
-		
-		// Save the game in singleplayer
-		waitUntil {isNil "AD_subtitle_running"};
-		if (!isMultiplayer && savingEnabled) then {saveGame;};
 		sleep 1.0;
 		
 		// Ensure pilot gets in drivers seat of the VTOL (Added in V1.1)
@@ -92,11 +101,20 @@ if (!isServer) exitWith {};
 // Steal tasks failed
 [] spawn
 {
-	waitUntil {sleep 1.0; (!alive vtol || !alive vtolPilot)};
+	waitUntil {sleep 1.0; (!alive vtol || !alive vtolPilot || !canMove vtol)};
 	
 	if (["stealTasks"] call FHQ_fnc_ttGetTaskState != "succeeded") then 
 	{
 		["stealTasks", "failed"] call FHQ_fnc_ttSetTaskState;
+		
+		if (!canMove vtol) then // Tell player why the objective failed even though the VTOL is still alive (heavily damaged, not blown up)
+		{
+			// Fox messege
+			[
+				["Spectre","What the hell are you doing, Sabre? The VTOL has taken too much damage to be able to fly and we don't have time to make the necessary repairs! Objective failed!",13.0,"RadioAmbient2"], AD_fnc_subtitle
+			] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
+		};
+		
 		sleep 3.0;
 		
 		if (["clearTask"] call FHQ_fnc_ttGetTaskState != "succeeded") then
@@ -146,7 +164,7 @@ if (!isServer) exitWith {};
 	waitUntil {sleep 1.0; ((term1 getVariable ["isTermComp",false]) && (term2 getVariable ["isTermComp",false]))};
 	
 	// Add CSAT intel to briefing
-	[sabre, ["CSAT Intel", "[Translated] After years of research, we have finally found it! Who would've guessed that the planes crashed into a volcano of all things. By the looks of it, I believe that the planes weren't shot down, but that the EMP prototype that the cargo plane was carrying malfunctioned and sent both the plane and its escorts plummeting toward the ground. Luckily, the EMP seems mostly intact, though it's been sitting underground for a few years. The technology used to create it is ancient, but through extensive reverse engineering I believe that we could have weaponized EMPs in just a couple years. - March 11, 2033"]] call FHQ_fnc_ttAddBriefing;
+	[sabre, ["CSAT Intel Snippet", "[Translated] After years of research, we have finally found it! Who would've guessed that the planes crashed into a volcano of all things. By the looks of it, I believe that the planes weren't shot down, but that the EMP prototype that the cargo plane was carrying malfunctioned and sent both the plane and its escorts plummeting toward the ground. Luckily, the EMP seems mostly intact, though it's been sitting underground for a few years. The technology is ancient, but through extensive reverse engineering I believe that we could have weaponized EMPs in just a few years. - March 11, 2028"]] call FHQ_fnc_ttAddBriefing;
 	sleep 1.0;
 	
 	["intelTask", "succeeded"] call FHQ_fnc_ttSetTaskState;
@@ -162,7 +180,7 @@ if (!isServer) exitWith {};
 [] spawn
 {
 	waitUntil {sleep 1.0; ["meetTask", "stealTasks", "empTask", "intelTask"] call FHQ_fnc_ttAreTasksCompleted};
-	sleep 1.0;
+	sleep 3.0;
 	
 	["primTasks", "succeeded"] call FHQ_fnc_ttSetTaskState;
 	sleep 3.0;
@@ -175,7 +193,7 @@ if (!isServer) exitWith {};
 	"|extMkr_1|[10327.8,11888.5]|Empty|ELLIPSE|[1050,1050]|0|FDiagonal|colorOPFOR|1" call BIS_fnc_stringToMarker;
 	"|extMkr_2|[10327.8,11888.5]|Empty|ELLIPSE|[1050,1050]|0|Border|colorOPFOR|1" call BIS_fnc_stringToMarker;
 	
-	[sabre, ["extTask", "<font color='#D22E2E'>Leave the area</font> by any means necessary!", "Leave the Area","",getMarkerPos "extMkr_1","assigned"]] call FHQ_fnc_ttAddTasks;
+	[sabre, ["extTask", "<font color='#D22E2E'>Leave the area</font> by any means necessary!", "Leave the Area","","","assigned"]] call FHQ_fnc_ttAddTasks;
 	sleep 3.0;
 	
 	// Fox messege
@@ -190,14 +208,33 @@ if (!isServer) exitWith {};
 	waitUntil {sleep 1.0; extracted};
 
 	["extTask", "succeeded"] call FHQ_fnc_ttSetTaskState;
+	
+	// delete music event handler
+	if (("Music" call BIS_fnc_getParamValue) == 1) then 
+	{
+		if (isDedicated) then
+		{
+			[["MusicStop", ehID]] remoteExec ["removeMusicEventHandler",-2,true]; // Remove everyones music event handlers
+		}
+		else
+		{
+			removeMusicEventHandler ["MusicStop", ehID]; // remove player host music event handler
+		};
+	};
+	
+	// Fade out music then play end theme
+	[5,0] remoteExec ["fadeMusic", [0,-2] select (isMultiplayer && isDedicated)];
+	sleep 3.0;
+	"" remoteExec ["playMusic",[0,-2] select (isMultiplayer && isDedicated)];
 	sleep 1.0;
+	[5,1] remoteExec ["fadeMusic", [0,-2] select (isMultiplayer && isDedicated)];
+
+	"LeadTrack01b_F_EXP" remoteExec ["playMusic",[0,-2] select (isMultiplayer && isDedicated)];
 	
 	// Fox messege
 	[
 		["Spectre","Good, you guys made it out alive. You did excellent work today, Sabre. We'll link back up at base soon. Spectre out.",10.0,"RadioAmbient8"], AD_fnc_subtitle
 	] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
-	
-	"LeadTrack01b_F_EXP" remoteExec ["playMusic",[0,-2] select (isMultiplayer && isDedicated)];
 	sleep 13.0;
 	
 	[] remoteExec ["AD_fnc_thanks", [0,-2] select (isMultiplayer && isDedicated)];
@@ -249,6 +286,5 @@ if (floor(random 2) == 1) then
 			_x assignAsCargo (_heli select 0); 
 			_x moveIncargo (_heli select 0);
 		} forEach units _infGroup;
-		
 	};
 };
