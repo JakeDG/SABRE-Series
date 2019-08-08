@@ -233,7 +233,7 @@ if (!isServer) exitWith {};
 	
 	// Fox messege
 	[
-		["Spectre","Good, you guys made it out alive. You did excellent work today, Sabre. We'll link back up at base soon. Spectre out.",10.0,"RadioAmbient8"], AD_fnc_subtitle
+		["Spectre","Good, you guys made it out alive. You did excellent work today, Sabre. We'll link up at base soon. Spectre out.",10.0,"RadioAmbient8"], AD_fnc_subtitle
 	] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
 	sleep 13.0;
 	

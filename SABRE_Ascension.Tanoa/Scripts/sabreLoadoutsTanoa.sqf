@@ -65,7 +65,7 @@ switch (_unitClass) do
 				comment "Add containers";
 				_unit forceAddUniform "U_B_T_Soldier_SL_F";
 				_unit addVest "V_PlateCarrierSpec_tna_F";
-				_unit addBackpack "B_Kitbag_rgr";
+				_unit addBackpack "B_Kitbag_sgg";
 
 				comment "Add binoculars";
 				_unit addMagazine "Laserbatteries";
@@ -124,7 +124,7 @@ switch (_unitClass) do
 				comment "Add containers";
 				_unit forceAddUniform "U_B_T_Soldier_SL_F";
 				_unit addVest "V_PlateCarrierSpec_tna_F";
-				_unit addBackpack "B_Kitbag_rgr";
+				_unit addBackpack "B_Kitbag_sgg";
 
 				comment "Add binoculars";
 				_unit addMagazine "Laserbatteries";
